@@ -66,7 +66,7 @@ education:
     date_start: 2016-09-01
     date_end: 2018-6-30
     summary: |
-      Research on Reinforcement Learning, Probability Theory for Data Distribution in large scale computer network. PHD candidate quit at 2nd year for personal and area reasons. Published 2 IEEE conference papers.
+      A
   - area: BSc Artificial Intelligence
     institution: Massachusetts Institute of Technology
     date_start: 2016-01-01
