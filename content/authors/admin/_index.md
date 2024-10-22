@@ -80,7 +80,7 @@ work:
     company_logo: ''
     date_start: 2020-04-20
     date_end: 'present'
-    summary: |2-
+    summary: |
       Responsibilities include:
       - ISP: Research on advanced HW ISP algorithms and 3A algorithms. Architecture on simulation tool chain and algo SW.
       - 3D vision: RandD on stereo's advanced calibration and depth estimation. Architecture on automotive's 360 view in algo and SW.
@@ -132,11 +132,11 @@ skills:
 
 languages:
   - name: English
-    percent: 100
+    percent: 80
   - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
+    percent: 100
+  # - name: Portuguese
+  #   percent: 25
 
 # Awards.
 #   Add/remove as many awards below as you like.
