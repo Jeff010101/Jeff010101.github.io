@@ -61,18 +61,28 @@ education:
     button:
       text: 'Read Thesis'
       url: 'https://drive.google.com/file/d/1xFA2F5m5e3rATGYW5j67CkSCIr0D2fOf/view?usp=drive_link'
-  - area: Research Associate, Information System
-    institution: Shanghai Jiao Tong University
-    date_start: 2016-09-01
-    date_end: 2018-6-30
+  - area: MEng Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
-      Research on Reinforcement Learning, Probability Theory for Data Distribution in large scale computer network. PHD candidate quit at 2nd year for personal and area reasons. Published 2 IEEE conference papers.
-  - area: BSc, Electrical engineering
-    institution: Beihang University
-    date_start: 2012-09-01
-    date_end: 2016-6-30
+      GPA: 3.8/4.0
+
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - area: BSc Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
-      GPA: 3.7/4.0, several important scholarship awards. 2nd Bsc majored in Applied Mathematics. Thesis supervised by [Prof. Yafei Tian](http://welcom.buaa.edu.cn/info/1019/3204.htm) and [Prof. Juntti Markku](http://www.ee.oulu.fi/~juntti/)
+      GPA: 3.4/4.0
+      
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
 work:
   - position: Director of Cloud Infrastructure
     company_name: GenCoin
