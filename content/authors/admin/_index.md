@@ -52,66 +52,77 @@ interests:
   - Camera Software \& System
 
 education:
-  - area: Master, Computer Science
+  - area: Master of Computer Science
     institution: Natioinal University of Singapore
     date_start: 2019-01-01
     date_end: 2020-01-31
     summary: |
-      Thesis on computer vision. Supervised by [Prof Stephane Bressan](https://www.comp.nus.edu.sg/cs/people/steph/). 3 conference papers published in ACM \& Springer.
+      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
     button:
       text: 'Read Thesis'
-      url: 'https://drive.google.com/file/d/1xFA2F5m5e3rATGYW5j67CkSCIr0D2fOf/view?usp=drive_link'
-  - area: Research Associate, Information System
-    institution: Shanghai Jiao Tong University
-    date_start: 2016-09-01
-    date_end: 2018-6-30
+      url: 'https://example.com'
+  - area: MEng Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
-      Research on Reinforcement Learning, Probability Theory for Data Distribution in large scale computer network. PHD candidate quit at 2nd year for personal and area reasons. Published 2 IEEE conference papers.
-  - area: BSc, Electrical engineering
-    institution: Beihang University
-    date_start: 2012-09-01
-    date_end: 2016-6-30
+      GPA: 3.8/4.0
+
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - area: BSc Artificial Intelligence
+    institution: Massachusetts Institute of Technology
+    date_start: 2016-01-01
+    date_end: 2020-12-31
     summary: |
-      GPA: 3.7/4.0, several important scholarship awards. 2nd Bsc majored in Applied Mathematics. Thesis supervised by [Prof. Yafei Tian](http://welcom.buaa.edu.cn/info/1019/3204.htm) and [Prof. Juntti Markku](http://www.ee.oulu.fi/~juntti/)
+      GPA: 3.4/4.0
+      
+      Courses included:
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
 work:
-  - position: Computer Vision Algorithm Engineer
-    company_name: Intel
+  - position: Director of Cloud Infrastructure
+    company_name: GenCoin
     company_url: ''
     company_logo: ''
-    date_start: 2020-04-20
-    date_end: 'present'
+    date_start: 2021-01-01
+    date_end: ''
     summary: |2-
       Responsibilities include:
-      - ISP: Research on advanced HW ISP algorithms and 3A algorithms. Architecture on simulation tool chain and algo SW.
-      - 3D vision: R\&D on stereo's advanced calibration \& depth estimation. Architecture on automotive's 360 view in algo \& SW.
-  # - position: Backend Software Engineer
-  #   company_name: X
-  #   company_url: ''
-  #   company_logo: ''
-  #   date_start: 2016-01-01
-  #   date_end: 2020-12-31
-  #   summary: |
-  #     Responsibilities include:
-  #     - Migrated infrastructure to a new data center
-  #     - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  #     - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - position: Backend Software Engineer
+    company_name: X
+    company_url: ''
+    company_logo: ''
+    date_start: 2016-01-01
+    date_end: 2020-12-31
+    summary: |
+      Responsibilities include:
+      - Migrated infrastructure to a new data center
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      - lorem ipsum dolor sit amet, consectetur adipiscing elit
 
 # Skills
 # Add your own SVG icons to `assets/media/icons/`
 skills:
   - name: Technical Skills
     items:
-      - name: Math
+      - name: Python
+        description: ''
+        percent: 80
+        icon: code-bracket
+      - name: Data Science
         description: ''
         percent: 100
         icon: chart-bar
-      - name: Coding
+      - name: SQL
         description: ''
-        percent: 100
-        icon: code-bracket
-      - name: Project Management
-        description: ''
-        percent: 80
+        percent: 40
         icon: circle-stack
   - name: Hobbies
     color: '#eeac02'
@@ -125,10 +136,10 @@ skills:
         description: ''
         percent: 100
         icon: cat
-      # - name: Photography
-      #   description: ''
-      #   percent: 80
-      #   icon: camera
+      - name: Photography
+        description: ''
+        percent: 80
+        icon: camera
 
 languages:
   - name: English
@@ -143,19 +154,33 @@ languages:
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
 awards:
-  # - title: Neural Networks and Deep Learning
-  #   url: https://www.coursera.org/learn/neural-networks-deep-learning
-  #   date: '2023-11-25'
-  #   awarder: Coursera
-  #   icon: coursera
-  #   summary: |
-  #     I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
+  - title: Neural Networks and Deep Learning
+    url: https://www.coursera.org/learn/neural-networks-deep-learning
+    date: '2023-11-25'
+    awarder: Coursera
+    icon: coursera
+    summary: |
+      I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
+  - title: Blockchain Fundamentals
+    url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
+    date: '2023-07-01'
+    awarder: edX
+    icon: edx
+    summary: |
+      Learned:
+      - Synthesize your own blockchain solutions
+      - Gain an in-depth understanding of the specific mechanics of Bitcoin
+      - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
+  - title: 'Object-Oriented Programming in R'
+    url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
+    certificate_url: https://www.datacamp.com
+    date: '2023-01-21'
+    awarder: datacamp
+    icon: datacamp
+    summary: |
+      Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
 ---
 
 ## About Me
 
-Jifang(Jeff) XING is working at Intel as a computer vision algorithm engineer. Currently, I'm engaged in the following fields:
-- Image Signal Processor (ISP): ISP Algorithm, IP Design, Simulation tools for IP models,...
-- Image Quality: 3A algorithms & SW, HDR, Color Calibration,...
-- 3D vision: Multi-camera Calibration Algorithm, Depth Camera, 360 Around Views(AVM), 3D reconstruction,...
-He works on computer vision related fields not only in researching but also engineering for helping computer vision to simplify and serve human life better.
+Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
