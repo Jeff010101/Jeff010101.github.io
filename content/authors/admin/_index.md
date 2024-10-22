@@ -79,7 +79,7 @@ work:
     company_url: ''
     company_logo: ''
     date_start: 2020-04-20
-    date_end: 'present'
+    date_end: ''
     summary: |
       Responsibilities include:
       - ISP: Research on advanced HW ISP algorithms and 3A algorithms. Architecture on simulation tool chain and algo SW.
@@ -171,9 +171,5 @@ awards:
 ---
 
 ## About Me
-A
-<!-- Jifang(Jeff) XING is working at Intel as a computer vision algorithm engineer. Currently, I'm engaged in the following fields: -->
-<!-- 1. Image Signal Processor (ISP): ISP Algorithm, IP Design, Simulation tools for IP models,...
-2. Image Quality: 3A algorithms & SW, HDR, Color Calibration,...
-3. 3D vision: Multi-camera Calibration Algorithm, Depth Camera, 360 Around Views(AVM), 3D reconstruction,...
-He works on computer vision related fields not only in researching but also engineering for helping computer vision to simplify and serve human life better. -->
+
+Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems 
