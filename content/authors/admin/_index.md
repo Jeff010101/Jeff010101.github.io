@@ -47,9 +47,9 @@ profiles:
   #   url: https://orcid.org/
 
 interests:
-  - ISP Algo and System for Consumer Electronics
+  - ISP Algo \& System for Consumer Electronics
   - 3D Vision Sensing
-  - Camera Software and System
+  - Camera Software \& System
 
 education:
   - area: Master, Computer Science
@@ -57,7 +57,7 @@ education:
     date_start: 2019-01-01
     date_end: 2020-01-31
     summary: |
-      Thesis on computer vision. Supervised by [Prof Stephane Bressan](https://www.comp.nus.edu.sg/cs/people/steph/). 3 conference papers published in ACM and Springer.
+      Thesis on computer vision. Supervised by [Prof Stephane Bressan](https://www.comp.nus.edu.sg/cs/people/steph/). 3 conference papers published in ACM \& Springer.
     button:
       text: 'Read Thesis'
       url: 'https://drive.google.com/file/d/1xFA2F5m5e3rATGYW5j67CkSCIr0D2fOf/view?usp=drive_link'
@@ -83,7 +83,7 @@ work:
     summary: |2-
       Responsibilities include:
       - ISP: Research on advanced HW ISP algorithms and 3A algorithms. Architecture on simulation tool chain and algo SW.
-      - 3D vision: RandD on stereo's advanced calibration and depth estimation. Architecture on automotive's 360 view in algo and SW.
+      - 3D vision: R\&D on stereo's advanced calibration \& depth estimation. Architecture on automotive's 360 view in algo \& SW.
   # - position: Backend Software Engineer
   #   company_name: X
   #   company_url: ''
