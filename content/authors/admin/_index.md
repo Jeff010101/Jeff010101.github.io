@@ -52,37 +52,27 @@ interests:
   - Camera Software \& System
 
 education:
-  - area: Master of Computer Science
+  - area: Master, Computer Science
     institution: Natioinal University of Singapore
     date_start: 2019-01-01
     date_end: 2020-01-31
     summary: |
-      Thesis on _Why LLMs are awesome_. Supervised by [Prof Joe Smith](https://example.com). Presented papers at 5 IEEE conferences with the contributions being published in 2 Springer journals.
+      Thesis on computer vision. Supervised by [Prof Stephane Bressan](https://www.comp.nus.edu.sg/cs/people/steph/). 3 conference papers published in ACM and Springer.
     button:
       text: 'Read Thesis'
-      url: 'https://example.com'
-  - area: MEng Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+      url: 'https://drive.google.com/file/d/1xFA2F5m5e3rATGYW5j67CkSCIr0D2fOf/view?usp=drive_link'
+  - area: Research Associate, Information System
+    institution: Shanghai Jiao Tong University
+    date_start: 2016-09-01
+    date_end: 2018-6-30
     summary: |
-      GPA: 3.8/4.0
-
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - area: BSc Artificial Intelligence
-    institution: Massachusetts Institute of Technology
-    date_start: 2016-01-01
-    date_end: 2020-12-31
+      Research on Reinforcement Learning, Probability Theory for Data Distribution in large scale computer network. PHD candidate quit at 2nd year for personal and area reasons. Published 2 IEEE conference papers.
+  - area: BSc, Electrical engineering
+    institution: Beihang University
+    date_start: 2012-09-01
+    date_end: 2016-6-30
     summary: |
-      GPA: 3.4/4.0
-      
-      Courses included:
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
-      - lorem ipsum dolor sit amet, consectetur adipiscing elit
+      GPA: 3.7/4.0, several important scholarship awards. 2nd Bsc majored in Applied Mathematics. Thesis supervised by [Prof. Yafei Tian](http://welcom.buaa.edu.cn/info/1019/3204.htm) and [Prof. Juntti Markku](http://www.ee.oulu.fi/~juntti/)
 work:
   - position: Director of Cloud Infrastructure
     company_name: GenCoin
