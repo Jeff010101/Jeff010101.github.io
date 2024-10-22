@@ -64,7 +64,7 @@ education:
   - area: Research Associate, Information System
     institution: Shanghai Jiao Tong University
     date_start: 2016-09-01
-    date_end: 2018-6-30
+    date_end: 2018-06-30
     summary: |
       A
   - area: BSc Artificial Intelligence
