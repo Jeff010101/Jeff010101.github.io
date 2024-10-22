@@ -101,30 +101,30 @@ work:
 skills:
   - name: Technical Skills
     items:
-      - name: Math
-        description: ''
-        percent: 100
-        icon: chart-bar
-      - name: Coding
-        description: ''
-        percent: 100
-        icon: code-bracket
-      - name: Project Management
-        description: ''
-        percent: 80
-        icon: circle-stack
+      # - name: Math
+      #   description: ''
+      #   percent: 100
+      #   icon: chart-bar
+      # - name: Coding
+      #   description: ''
+      #   percent: 100
+      #   icon: code-bracket
+      # - name: Project Management
+      #   description: ''
+      #   percent: 80
+      #   icon: circle-stack
   - name: Hobbies
-    color: '#eeac02'
-    color_border: '#f0bf23'
+    # color: '#eeac02'
+    # color_border: '#f0bf23'
     items:
-      - name: Hiking
-        description: ''
-        percent: 60
-        icon: person-simple-walk
-      - name: Cats
-        description: ''
-        percent: 100
-        icon: cat
+    #   - name: Hiking
+    #     description: ''
+    #     percent: 60
+    #     icon: person-simple-walk
+    #   - name: Cats
+    #     description: ''
+    #     percent: 100
+    #     icon: cat
       # - name: Photography
       #   description: ''
       #   percent: 80
