@@ -171,8 +171,8 @@ awards:
 ---
 
 ## About Me
-
-Jifang(Jeff) XING is working at Intel as a computer vision algorithm engineer. Currently, I'm engaged in the following fields:
+A
+<!-- Jifang(Jeff) XING is working at Intel as a computer vision algorithm engineer. Currently, I'm engaged in the following fields: -->
 <!-- 1. Image Signal Processor (ISP): ISP Algorithm, IP Design, Simulation tools for IP models,...
 2. Image Quality: 3A algorithms & SW, HDR, Color Calibration,...
 3. 3D vision: Multi-camera Calibration Algorithm, Depth Camera, 360 Around Views(AVM), 3D reconstruction,...
