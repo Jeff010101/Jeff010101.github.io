@@ -132,11 +132,9 @@ skills:
 
 languages:
   - name: English
-    percent: 100
-  - name: Chinese
     percent: 75
-  - name: Portuguese
-    percent: 25
+  - name: Chinese
+    percent: 100
 
 # Awards.
 #   Add/remove as many awards below as you like.
@@ -157,5 +155,5 @@ awards:
 Jifang(Jeff) XING is working at Intel as a computer vision algorithm engineer. Currently, I'm engaged in the following fields:
 - Image Signal Processor (ISP): ISP Algorithm, IP Design, Simulation tools for IP models,...
 - Image Quality: 3A algorithms & SW, HDR, Color Calibration,...
-- 3D vision: Multi-camera Calibration Algorithm, Depth Camera, 360 Around Views(AVM), 3D reconstruction,...
+- 3D vision: Multi-camera Calibration Algorithm, Depth Camera, 360 Around Views(AVM), 3D reconstruction,...  
 He works on computer vision related fields not only in researching but also engineering for helping computer vision to simplify and serve human life better.
