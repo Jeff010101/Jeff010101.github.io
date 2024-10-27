@@ -84,6 +84,33 @@ work:
       Responsibilities include:
       - ISP: Research on advanced HW ISP algorithms and 3A algorithms. Architecture on simulation tool chain and algo SW.
       - 3D vision: RandD on stereo's advanced calibration and depth estimation. Architecture on automotive's 360 view in algo and SW.
+  - position: Research Assistant
+    company_name: National University of Singapore
+    company_url: ''
+    company_logo: ''
+    date_start: 2019-06-30
+    date_end: 2020-01-30
+    summary: |
+      Responsibilities include:
+      - Research on object detection problems and instance segmentation for WATCHA Porject
+  - position: Teaching Assistant
+    company_name: National University of Singapore
+    company_url: ''
+    company_logo: ''
+    date_start: 2019-07-20
+    date_end: 2020-12-30
+    summary: |
+      Responsibilities include:
+      - Give Tutorial Lectures for "Introduction to Artificial Intelligence"
+  - position: Research Intern
+    company_name: Intel
+    company_url: ''
+    company_logo: ''
+    date_start: 2018-07-01
+    date_end: 2018-12-30
+    summary: |
+      Responsibilities include:
+      - Deep learning inference acceleration in x86 architecture.
   # - position: Backend Software Engineer
   #   company_name: X
   #   company_url: ''
