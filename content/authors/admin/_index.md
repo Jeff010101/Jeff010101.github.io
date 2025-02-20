@@ -47,8 +47,8 @@ profiles:
   #   url: https://orcid.org/
 
 interests:
-  - ISP Algo \& System for Consumer Electronics
-  - 3D Vision Sensing
+  - ISP: both AI&classical algorithms, architecture & IP core simulation
+  - 3D Vision: sensing & understanding
   - Camera Software \& System
 
 education:
