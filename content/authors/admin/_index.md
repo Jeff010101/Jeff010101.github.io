@@ -47,8 +47,8 @@ profiles:
   #   url: https://orcid.org/
 
 interests:
-  - ISP: both AI&classical algorithms, architecture & IP core simulation
-  - 3D Vision: sensing & understanding
+  - Vision Sensing & Understanding: vLM, 3D vision
+  - ISP (sensor to APPs): both AI&classical algorithms, architecture & IP core simulation
   - Camera Software \& System
 
 education:
@@ -83,7 +83,7 @@ work:
     summary: |
       Responsibilities include:
       - ISP: Research on advanced HW ISP algorithms and 3A algorithms. Architecture on simulation tool chain and algo SW.
-      - 3D vision: RandD on stereo's advanced calibration and depth estimation. Architecture on automotive's 360 view in algo and SW.
+      - 3D vision: R&D on stereo's advanced calibration and depth estimation. Architecture on automotive's 360 view in algo and SW.
   - position: Research Assistant
     company_name: National University of Singapore
     company_url: ''
