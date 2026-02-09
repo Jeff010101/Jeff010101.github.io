@@ -13,13 +13,13 @@ postnominals:
   - ""
 status:
   icon: "☕️"
-role: "Senior Computer Vision Algorithm Engineer at Intel"
-bio: "Jeff XING is a Senior Computer Vision Algorithm Engineer at SiG in Intel.
+role: "Senior Computer Vision Algorithm Engineer"
+bio: "Jeff XING is a Senior Computer Vision Algorithm Engineer at Intel.
   His work focuses on ISP/AIISP, 3D Vision (depth sensing, calibration, and reconstruction), 3A technolgy, vLLMs.
-  His works covers vision part in many products in consumer electronic devices, autonomous, AMR.
-  His aim is to make AI system sensing, understanding the vision information of the world better.\n"
+  His works covers vision components (HW&SW) in many products in consumer electronic devices, autonomous, AMR.
+  His aim is to make AI system sensing & understanding the vision information of the world better.\n"
 affiliations:
-  - name: "Intel"
+  - name: "SiG, Intel"
     url: "https://www.intel.com/"
 links:
   - icon: "at-symbol"
