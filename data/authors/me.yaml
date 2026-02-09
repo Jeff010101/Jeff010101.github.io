@@ -3,105 +3,86 @@ slug: "me"
 is_owner: true
 name:
   display: "Jeff XING"
-  given: "Alex"
-  family: "Johnson"
+  given: "Jeff"
+  family: "XING"
   alternate: ""
   pronunciation: ""
-  pronouns: "he/him"
+  pronouns: ""
 postnominals:
-  - "PhD"
-  - "MIEEE"
+  - ""
+  - ""
 status:
   icon: "☕️"
-role: "Senior AI Research Scientist"
-bio: "Alex Johnson is a Senior AI Research Scientist at Meta AI. His research
-
-  has been published in top conferences like NeurIPS and ICML, with over
-
-  10,000 citations. Alex is passionate about pushing the boundaries of AI
-
-  while ensuring ethical development.\n"
+role: "Senior Computer Vision Algorithm Engineer at Intel"
+bio: "Jeff XING is a Senior Computer Vision Algorithm Engineer at SiG in Intel.
+  His work focuses on ISP/AIISP, 3D Vision (depth sensing, calibration, and reconstruction), 3A technolgy, vLLMs.
+  His works covers vision part in many products in consumer electronic devices, autonomous, AMR.
+  His aim is to make AI system sensing, understanding the vision information of the world better.\n"
 affiliations:
-  - name: "Meta AI"
-    url: "https://ai.meta.com/"
+  - name: "Intel"
+    url: "https://www.intel.com/"
 links:
   - icon: "at-symbol"
-    url: "mailto:alex.johnson@example.com"
-    label: "E-mail Me"
-  - icon: "brands/x"
-    url: "https://x.com/example"
+    url: "mailto:1299332389@qq.com"
+    label: "E-mail"
+  - icon: "hero/phone"
+    url: "tel:+8617810356641"
+    label: "Phone"
+  # - icon: "brands/x"
+  #   url: "https://x.com/example"
   - icon: "brands/github"
-    url: "https://github.com/example"
+    url: "https://github.com/Jeff010101"
   - icon: "brands/linkedin"
-    url: "https://www.linkedin.com/in/example/"
+    url: "https://www.linkedin.com/in/jifangxing/"
   - icon: "academicons/google-scholar"
-    url: "https://scholar.google.com/citations?user=example"
-  - icon: "academicons/orcid"
-    url: "https://orcid.org/0000-0002-1825-0097"
+    url: "https://scholar.google.com/citations?user=NDhLUukAAAAJ&hl=en"
+  # - icon: "academicons/orcid"
+  #   url: "https://orcid.org/0000-0002-1825-0097"
 interests:
-  - "Large Language Models"
-  - "Computer Vision"
-  - "Reinforcement Learning"
-  - "AI Ethics"
+  - "ISP / AIISP"
+  - "Photography technology"
+  - "3D Vision (Sensing/Reconstruction/Understanding/Generation)"
+  - "vLLMs"
 education:
-  - degree: "PhD Computer Science"
-    institution: "Stanford University"
-    start: "2015-09-01"
-    end: "2019-06-30"
-    summary: "Thesis on scaling laws for neural language models. Published 5 papers in NeurIPS and ICML.\n"
-    button:
-      text: "Download dissertation"
-      url: "/resume.pdf"
-      icon: "hero/arrow-down-tray"
-  - degree: "MS Computer Science"
-    institution: "Carnegie Mellon University"
-    start: "2013-09-01"
-    end: "2015-05-31"
-  - degree: "BS Computer Science"
-    institution: "MIT"
-    start: "2009-09-01"
-    end: "2013-05-31"
+  - degree: "Master of Computing"
+    institution: "National University of Singapore"
+    start: "2019-01-01"
+    end: "2020-01-01"
+    summary: "GPA: 4.3/5.0\n"
+  - degree: "Bachelor of Engineering (Electrical Engineering)"
+    institution: "Beihang University"
+    start: "2012-09-01"
+    end: "2016-06-01"
+    summary: "GPA: 3.7/4.0 (Top 5%). Second major in Applied Mathematics.\n"
 experience:
-  - role: "Senior AI Research Scientist"
-    org: "Meta AI"
-    start: "2020-01-01"
-    summary: "Leading research on multimodal AI systems. Contributed to Llama 2 and other open-source models.\n"
-    button:
-      text: "View portfolio"
-      url: "/"
-      icon: "hero/arrow-down-tray"
-  - role: "AI Research Intern"
-    org: "OpenAI"
+  - role: "Senior Computer Vision Algorithm Engineer"
+    org: "Intel China Research Center Corporation"
+    start: "2020-04-01"
+    summary: "Leading R&D for Flexible AIISP for AMR & CE products.\n\n- Built an end-to-end ISP simulation & development platform (kernel algorithms, control algorithms, adaptor layer, IQ evaluation).\n- Led ISP kernel + tuning/calibration algorithm development; contributed to color, enhancement, and geometry warp modules.\n- Delivered AIISP on heterogeneous computing for premium laptops (Lenovo/Dell/HP/Huawei) and IQ control algorithms (3A/HDR TM/Shading, etc.) for Intel ISP.\n- 3D vision: developed on-chip self-calibration for RealSense stereo cameras; refactored on-chip calibration algorithms; designed real-time 3D reconstruction architecture across chip/host; explored WFOV 3D sensing and 360 surround view systems.\n- Patents: 10 US/WIPO patents.\n"
+  - role: "Research Assistant"
+    org: "National University of Singapore"
     start: "2019-06-01"
-    end: "2019-12-31"
-    summary: "Worked on GPT-3 scaling. Co-authored paper on prompt engineering.\n"
+    end: "2020-01-01"
+    summary: "Research on deep-learning-based surrogate modeling & simulation and image processing; published 3 conference papers.\n\nAlso served as a tutorial lecturer for NUS CS3243 (Artificial Intelligence).\n"
+  - role: "Research Intern"
+    org: "Intel Asia-Pacific Research and Development Ltd"
+    start: "2018-06-01"
+    end: "2018-12-01"
+    summary: "Research on semantic segmentation and deep learning acceleration frameworks.\n"
+  - role: "Research Associate"
+    org: "Shanghai Jiao Tong University"
+    start: "2016-07-01"
+    end: "2018-12-01"
+    summary: "Theoretical research on reinforcement learning, stochastic geometry, and convex optimization in information networks; published 2 top-conference papers and received 1 granted China patent.\n"
 skills:
-  - name: "Technical Skills"
-    items:
-      - label: "Python"
-        level: 5
-      - label: "Machine Learning"
-        level: 5
-      - label: "Cloud Computing"
-        level: 4
-  - name: "Research & Communication"
-    items:
-      - label: "Academic Writing"
-        level: 5
-      - label: "Conference Presentations"
-        level: 4
-      - label: "Grant Proposals"
-        level: 4
-languages:
-  - name: "English"
-    level: 5
-    label: "Native"
-  - name: "Spanish"
-    level: 4
-    label: "Fluent"
-awards:
-  - title: "Best Paper Award"
-    awarder: "NeurIPS"
-    date: "2022-12-01"
-    summary: "Awarded for groundbreaking work on efficient training of large models."
-    icon: "hero/trophy"
+  # - name: "AI "
+  #   items:
+  #     - label: "Camera ISP / AIISP"
+  #       level: 5
+  #     - label: "Image Quality (3A / HDR / Color / TM)"
+  #       level: 5
+  #     - label: "3D Sensing (Depth / SLAM)"
+  #       level: 4
+  #     - label: "3D Reconstruction (SfM / NeRF / 3DGS)"
+  #       level: 4
+
