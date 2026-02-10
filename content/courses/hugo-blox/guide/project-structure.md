@@ -1,8 +1,9 @@
 ---
 title: Project Structure
 weight: 1
+status: archived
+draft: true
 ---
-
 ## Folder Structure
 
 There are **4 main folders for Hugo-based sites**:

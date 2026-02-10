@@ -2,8 +2,9 @@
 title: Embed Media
 summary: Easily embed audio and video media in Hugo sites
 date: 2023-10-24
+status: archived
+draft: true
 ---
-
 [HugoBlox Kit](https://hugoblox.com) is designed to give technical content creators a seamless experience. You can focus on the content and the HugoBlox Kit which this template is built upon handles the rest.
 
 **Embed videos, podcasts, code, LaTeX math, and even test students!**

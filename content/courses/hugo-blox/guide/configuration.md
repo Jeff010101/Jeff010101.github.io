@@ -1,8 +1,9 @@
 ---
 title: Configuration
 weight: 2
+status: archived
+draft: true
 ---
-
 The configuration of your site can be found in `config/_default/`.
 
 <!--more-->

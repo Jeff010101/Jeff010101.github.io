@@ -1,8 +1,9 @@
 ---
 title: Buttons
 linkTitle: Buttons
+status: archived
+draft: true
 ---
-
 A modern, customizable button shortcode with gradient styling, icons, and smart link handling.
 
 <!--more-->
