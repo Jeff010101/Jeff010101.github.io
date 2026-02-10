@@ -13,7 +13,7 @@ hugoblox:
     doi: 10.1145/3366030.3368456
 publication_types:
   - paper-conference
-publication: iiWAS2019: Proceedings of the 21st International Conference on Information Integration and Web-based Applications & Services
+publication: iiWAS2019 - Proceedings of the 21st International Conference on Information Integration and Web-based Applications & Services
 publication_short: ""
 links:
   - type: source

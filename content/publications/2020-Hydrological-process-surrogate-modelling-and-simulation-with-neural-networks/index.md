@@ -13,7 +13,7 @@ hugoblox:
     doi: 10.1007/978-3-030-47436-2_34
 publication_types:
   - paper-conference
-publication: PAKDD 2020: Advances in Knowledge Discovery and Data Mining
+publication: PAKDD 2020 - Advances in Knowledge Discovery and Data Mining
 publication_short: ""
 links:
   - type: source
