@@ -43,7 +43,7 @@ links:
 # projects:
 #   - example
 slides: ""
-status: null
+status: archived
 draft: false
 ---
 > [!NOTE]
