@@ -24,8 +24,8 @@ hugoblox:
   ids:
     doi: 10.1109/SPAWC.2017.8227703
 links:
-  - type: pdf
-    url: ""
+  # - type: pdf
+  #   url: ""
   # - type: code
   #   url: https://github.com/HugoBlox/kit
   # - type: dataset
