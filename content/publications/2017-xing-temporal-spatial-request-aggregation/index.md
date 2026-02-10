@@ -2,7 +2,7 @@
 title: Temporal-Spatial Request Aggregation for Cache-Enabled Wireless
   Multicasting Networks
 authors:
-  - Jifang Xing
+  - me
   - Ying Cui
   - Vincent Lau
 date: 2017-12-01T00:00:00Z
