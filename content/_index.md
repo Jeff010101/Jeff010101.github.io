@@ -39,14 +39,18 @@ sections:
         shape: circle # Options: circle (default), square, rounded
   - block: markdown
     content:
-      title: '📚 My Research'
+      title: '📚 My work interests'
       subtitle: ''
       text: |-
-        Use this area to speak to your mission. I'm a research scientist in the Moonshot team at DeepMind. I blog about machine learning, deep learning, and moonshots.
-
-        I apply a range of qualitative and quantitative methods to comprehensively investigate the role of science and technology in the economy.
-
-        Please reach out to collaborate 😃
+        My current works and interest focus on: 
+          * How vision improve AI?
+            * World sensing, understanding, regeneration
+            * 3D simulation for AMR
+            * Machine vision
+          * How AI change ISP?
+            * AIISP architect
+            * AI involved ISP workflow (pipe/calibration/tuning/IQ)
+        Let's enable AI to sense and understand the world by vision better! 😃
     design:
       columns: '1'
   - block: collection
