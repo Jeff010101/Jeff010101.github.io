@@ -37,10 +37,10 @@ featured: true
 hugoblox:
   ids:
     arxiv: 1702.01839
-links:
-  - type: preprint
-    provider: arxiv
-    id: 1702.01839
+# links:
+#   - type: preprint
+#     provider: arxiv
+#     id: 1702.01839
 projects:
   - internal-project
 slides: ""
