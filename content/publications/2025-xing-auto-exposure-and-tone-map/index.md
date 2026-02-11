@@ -1,5 +1,5 @@
 ---
-title: \*\*\* Tone-Mapping \*\*\* #Segment-based Tone-Mapping with Adaptive Boundary Blending
+title: XX Tone Mapping XX #Segment-based Tone-Mapping with Adaptive Boundary Blending
 authors:
   - Xin Chang
   - Hongjiang Zheng
