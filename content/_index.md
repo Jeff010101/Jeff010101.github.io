@@ -42,15 +42,17 @@ sections:
       title: '📚 My work interests'
       subtitle: ''
       text: |-
-        My current works and interest focus on: 
-          * How vision improve AI?
-            * World sensing, understanding, regeneration
-            * 3D simulation for AMR
-            * Machine vision
-          * How AI change ISP?
-            * AIISP architect
-            * AI involved ISP workflow (pipe/calibration/tuning/IQ)
-        Let's enable AI to sense and understand the world by vision better! 😃
+        My current work and interests focus on:
+          * High-performance LLM and multimodal inference frameworks
+            * SGLang, vLLM, and ATOM
+            * Inference optimization and scalable serving
+          * Agentic AI systems
+            * Efficient inference for agent workflows
+            * Reliable orchestration across models and tools
+          * Distributed inference systems
+            * Scaling inference across heterogeneous hardware
+            * Improving throughput, latency, and resource efficiency
+        Let's build faster and more scalable AI inference systems! 😃
     design:
       columns: '1'
   - block: collection

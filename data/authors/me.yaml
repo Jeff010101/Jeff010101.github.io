@@ -13,14 +13,14 @@ postnominals:
   - ""
 status:
   icon: "☕️"
-role: "Senior Computer Vision Algorithm Engineer"
-bio: "Jeff XING is a Senior Computer Vision Algorithm Engineer.
-  His work focuses on ISP/AIISP, 3D Vision (depth sensing, calibration, and reconstruction), 3A technolgy, vLLMs.
-  His works covers vision part in many products in consumer electronic devices, autonomous, AMR.
+role: "AI Product Engineer"
+bio: "Jeff XING is an AI Product Engineer at AMD.
+  His work focuses on LLM and multimodal inference frameworks, including SGLang, vLLM, and ATOM,
+  for agentic and distributed inference systems.
   \n"
 affiliations:
-  - name: "Intel"
-    url: "https://www.intel.com/"
+  - name: "AMD"
+    url: "https://www.amd.com/"
 links:
   - icon: "at-symbol"
     url: "mailto:1299332389@qq.com"
@@ -39,10 +39,10 @@ links:
   # - icon: "academicons/orcid"
   #   url: "https://orcid.org/0000-0002-1825-0097"
 interests:
-  - "ISP / AIISP"
-  - "Photography technology"
-  - "3D Vision (Sensing/Reconstruction/Understanding/Generation)"
-  - "vLLMs"
+  - "LLM and Multimodal Inference"
+  - "Agentic AI Systems"
+  - "Distributed Inference Systems"
+  - "SGLang / vLLM / ATOM"
 education:
   - degree: "Master of Computing"
     institution: "National University of Singapore"
@@ -55,9 +55,14 @@ education:
     end: "2016-06-01"
     summary: "Second major in Applied Mathematics.\n"
 experience:
+  - role: "AI Product Engineer"
+    org: "AMD"
+    start: "2026-04-01"
+    summary: "Works on LLM and multimodal inference frameworks, including SGLang, vLLM, and ATOM, for agentic and distributed inference systems.\n"
   - role: "Senior Computer Vision Algorithm Engineer"
     org: "Intel"
     start: "2020-04-01"
+    end: "2026-03-31"
     summary: "Works on Image Processing Unit (ISP IP in Intel CPU, used in CEs/AMR/Automotive), Realsense (Depth camera for AMR and other usecases) and other vision systems.\n"
   - role: "Research Assistant"
     org: "National University of Singapore"

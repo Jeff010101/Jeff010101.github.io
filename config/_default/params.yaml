@@ -3,8 +3,8 @@ hugoblox:
   identity:
     name: Jeff XING
     type: person
-    tagline: Sensing & Understanding World by Vision
-    description: Jeff XING is currently an algorithm engineer in computer vision Intel since 2020. He works in ISP, 3D vision,  MvLLMs...
+    tagline: Building Agentic and Distributed AI Inference Systems
+    description: Jeff XING is an AI Product Engineer at AMD, working on LLM and multimodal inference frameworks including SGLang, vLLM, and ATOM.
   theme:
     mode: system
     pack: minimal
