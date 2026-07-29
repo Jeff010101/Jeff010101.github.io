@@ -7,7 +7,7 @@ authors:
   - Dewa Made Sri Arsa
   - Ismail Khalil
   - Stéphane Bressan
-date: 2020-02-22T00:00:00Z
+date: 2019-12-02T00:00:00Z
 hugoblox:
   ids:
     doi: 10.1145/3366030.3368456

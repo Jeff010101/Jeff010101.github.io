@@ -1,5 +1,5 @@
 ---
-title: Adaptive technology for reducing 3a algorithm computation complexity
+title: Adaptive Technology for Reducing 3A Algorithm Computation Complexity
 authors:
   - Hongjiang ZHENG
   - Yu Xia
@@ -10,7 +10,7 @@ date: 2023-12-02T00:00:00Z
 publishDate: 2023-12-02T00:00:00Z
 publication_types:
   - patent
-publication: "US Patent, no.20230351549A1"
+publication: "U.S. Patent Application No. 18/345,593 (US 2023/0351549 A1)"
 publication_short: ""
 abstract: ""
 summary: ""
@@ -22,11 +22,4 @@ projects:
 slides: ""
 status: null
 draft: false
-
 ---
-<!-- This work is driven by the results in my [previous paper](/publications/conference-paper/) on LLMs. -->
-
-> [!NOTE]
-> Create your slides in Markdown - click the *Slides* button to check out the example.
-
-Add the publication's **full text** or **supplementary notes** here. You can use rich formatting such as including [code, math, and images](https://docs.hugoblox.com/content/writing-markdown-latex/).
