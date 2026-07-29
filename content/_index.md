@@ -42,7 +42,7 @@ sections:
       title: '📚 My work interests'
       subtitle: ''
       text: |-
-        My current work and interests focus on:
+        My current work and broader technical interests include:
           * High-performance LLM and multimodal inference frameworks
             * SGLang, vLLM, and ATOM
             * Inference optimization and scalable serving
@@ -52,7 +52,14 @@ sections:
           * Distributed inference systems
             * Scaling inference across heterogeneous hardware
             * Improving throughput, latency, and resource efficiency
-        Let's build faster and more scalable AI inference systems! 😃
+          * Computer vision and 3D vision
+            * World sensing, understanding, and generation
+            * 3D sensing, reconstruction, and simulation for robotics
+            * Machine vision
+          * ISP, AIISP, and photography technology
+            * AIISP architecture
+            * AI-enhanced ISP pipelines, calibration, tuning, and image quality
+        Let's build intelligent systems that sense, understand, and interact with the world! 😃
     design:
       columns: '1'
   - block: collection
