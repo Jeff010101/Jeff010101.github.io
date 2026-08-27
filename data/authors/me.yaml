@@ -8,13 +8,10 @@ name:
   alternate: ""
   pronunciation: ""
   pronouns: ""
-postnominals:
-  - ""
-  - ""
 status:
   icon: "☕️"
-role: "AI Product Engineer"
-bio: "Jeff XING is an AI Product Engineer at AMD.
+role: "Engineer in AI"
+bio: "Jeff XING is an Engineer in AI at AMD.
   He builds high-performance LLM and multimodal inference systems for agentic AI applications.
   His broader work spans distributed serving, computer vision, robotics, and image processing,
   with a focus on turning research ideas into reliable products.
