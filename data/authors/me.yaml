@@ -15,15 +15,16 @@ status:
   icon: "☕️"
 role: "AI Product Engineer"
 bio: "Jeff XING is an AI Product Engineer at AMD.
-  His work focuses on LLM and multimodal inference frameworks, including SGLang, vLLM, and ATOM,
-  for agentic and distributed inference systems.
+  He builds high-performance LLM and multimodal inference systems for agentic AI applications.
+  His broader work spans distributed serving, computer vision, robotics, and image processing,
+  with a focus on turning research ideas into reliable products.
   \n"
 affiliations:
   - name: "AMD"
     url: "https://www.amd.com/"
 links:
   - icon: "at-symbol"
-    url: "mailto:1299332389@qq.com"
+    url: "mailto:jifangxing@gmail.com"
     label: "E-mail"
   - icon: "hero/phone"
     url: "tel:+8617810356641"
@@ -39,13 +40,11 @@ links:
   # - icon: "academicons/orcid"
   #   url: "https://orcid.org/0000-0002-1825-0097"
 interests:
-  - "LLM and Multimodal Inference"
-  - "Agentic AI Systems"
-  - "Distributed Inference Systems"
-  - "SGLang / vLLM / ATOM"
-  - "ISP / AIISP"
-  - "Photography Technology"
-  - "3D Vision (Sensing / Reconstruction / Understanding / Generation)"
+  - "LLM and multimodal inference"
+  - "Agentic and distributed AI systems"
+  - "Inference optimization and scalable serving"
+  - "Computer vision, 3D vision, and robotics"
+  - "ISP, AIISP, and computational photography"
 education:
   - degree: "Master of Computing"
     institution: "National University of Singapore"
@@ -61,36 +60,27 @@ experience:
   - role: "AI Product Engineer"
     org: "AMD"
     start: "2026-04-01"
-    summary: "Works on LLM and multimodal inference frameworks, including SGLang, vLLM, and ATOM, for agentic and distributed inference systems.\n"
+    summary: "Develops LLM and multimodal inference frameworks, including SGLang, vLLM, and ATOM, for agentic AI and distributed serving.\n"
   - role: "Senior Computer Vision Algorithm Engineer"
     org: "Intel"
     start: "2020-04-01"
     end: "2026-03-31"
-    summary: "Works on Image Processing Unit (ISP IP in Intel CPU, used in CEs/AMR/Automotive), Realsense (Depth camera for AMR and other usecases) and other vision systems.\n"
+    summary: "Developed computer vision and imaging algorithms for image signal processors, Intel RealSense depth cameras, robotics, and automotive applications.\n"
   - role: "Research Assistant"
     org: "National University of Singapore"
     start: "2019-06-01"
     end: "2020-01-01"
-    summary: "Research on deep-learning-based surrogate modeling & simulation and image processing in DB Lab.\n\nAlso served as a tutorial lecturer for course Artificial Intelligence.\n"
+    summary: "Researched deep-learning-based surrogate modeling, simulation, and image processing in the DB Lab. Also served as a tutorial lecturer for an Artificial Intelligence course.\n"
   - role: "Research Intern"
     org: "Intel"
     start: "2018-06-01"
     end: "2018-12-01"
-    summary: "Research on semantic segmentation and deep learning acceleration frameworks.\n"
+    summary: "Researched semantic segmentation and frameworks for accelerating deep learning workloads.\n"
   - role: "Research Associate"
     org: "Shanghai Jiao Tong University"
     start: "2016-07-01"
     end: "2018-12-01"
-    summary: "Theoretical research on reinforcement learning, stochastic geometry, and convex optimization.\n"
-skills:
-  # - name: "AI "
-  #   items:
-  #     - label: "Camera ISP / AIISP"
-  #       level: 5
-  #     - label: "Image Quality (3A / HDR / Color / TM)"
-  #       level: 5
-  #     - label: "3D Sensing (Depth / SLAM)"
-  #       level: 4
-  #     - label: "3D Reconstruction (SfM / NeRF / 3DGS)"
-  #       level: 4
+    summary: "Conducted theoretical research in reinforcement learning, stochastic geometry, and convex optimization.\n"
+
+
 

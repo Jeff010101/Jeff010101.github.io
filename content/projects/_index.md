@@ -11,8 +11,8 @@ design:
 sections:
   - block: collection
     content:
-      title: Porjects
-      text: Some interesting projects of mine to be shared.
+      title: Projects
+      text: Selected work in AI systems, computer vision, and imaging technology.
       filters:
         folders:
           - projects

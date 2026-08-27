@@ -39,27 +39,15 @@ sections:
         shape: circle # Options: circle (default), square, rounded
   - block: markdown
     content:
-      title: '📚 My work interests'
+      title: 'Focus areas'
       subtitle: ''
       text: |-
-        My current work and broader technical interests include:
-          * High-performance LLM and multimodal inference frameworks
-            * SGLang, vLLM, and ATOM
-            * Inference optimization and scalable serving
-          * Agentic AI systems
-            * Efficient inference for agent workflows
-            * Reliable orchestration across models and tools
-          * Distributed inference systems
-            * Scaling inference across heterogeneous hardware
-            * Improving throughput, latency, and resource efficiency
-          * Computer vision and 3D vision
-            * World sensing, understanding, and generation
-            * 3D sensing, reconstruction, and simulation for robotics
-            * Machine vision
-          * ISP, AIISP, and photography technology
-            * AIISP architecture
-            * AI-enhanced ISP pipelines, calibration, tuning, and image quality
-        Let's build intelligent systems that sense, understand, and interact with the world! 😃
+        I work across two connected layers of intelligent systems:
+
+        * **AI inference:** LLM and multimodal serving, agentic workflows, distributed execution, and performance optimization across heterogeneous hardware.
+        * **Visual intelligence:** computer vision, 3D sensing and reconstruction, robotics, ISP/AIISP, and computational photography.
+
+        My goal is to make intelligent systems faster, more capable, and dependable in real-world environments.
     design:
       columns: '1'
   - block: collection
