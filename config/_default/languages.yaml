@@ -5,18 +5,38 @@
 # Default language
 en:
   languageCode: en-us
-  # Uncomment for multi-lingual sites, and move English content into `en` sub-folder.
-  #contentDir: content/en
+  languageName: English
+  weight: 1
 
-# Uncomment the lines below to configure your website in a second language.
-#zh:
-#  languageCode: zh-Hans
-#  contentDir: content/zh
-#  title: Chinese website title...
-#  params:
-#    description: Site description in Chinese...
-#  menu:
-#    main:
-#      - name: 传
-#        url: '#about'
-#        weight: 1
+zh:
+  languageCode: zh-Hans
+  languageName: 中文
+  weight: 2
+  title: Jeff XING | 个人网站
+  params:
+    description: Jeff XING 的个人网站
+    hugoblox:
+      header:
+        search: false
+      search:
+        enable: false
+  menu:
+    main:
+      - name: 简介
+        url: /zh/
+        weight: 10
+      - name: 经历
+        url: /zh/experience/
+        weight: 20
+      - name: 论文与专利
+        url: /zh/publications/
+        weight: 11
+      - name: 演讲
+        url: /zh/events/
+        weight: 12
+      - name: 博客
+        url: /zh/blog/
+        weight: 25
+      - name: 项目
+        url: /zh/projects/
+        weight: 30

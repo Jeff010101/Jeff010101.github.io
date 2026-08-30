@@ -31,6 +31,8 @@ hugoblox:
     language_switcher: true
   copyright:
     notice: © {year} {name}
+    license:
+      type: custom
   content:
     math:
       enable: false

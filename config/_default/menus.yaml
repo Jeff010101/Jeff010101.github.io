@@ -13,6 +13,9 @@ main:
   - name: Publications
     url: publications/
     weight: 11
+  - name: Blog
+    url: blog/
+    weight: 25
   # - name: News
   #   url: news/
   #   weight: 13
