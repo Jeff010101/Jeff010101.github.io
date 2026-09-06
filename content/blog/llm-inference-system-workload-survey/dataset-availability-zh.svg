@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+<title id="title">到达时刻与请求内容的可用程度</title>
+<desc id="desc">按到达时刻与请求内容可用程度排列公开数据集的网格；没有生产服务端轨迹落在两者同时较强的区域。</desc>
+<style>
+text { font-family: 'Segoe UI', 'Noto Sans SC', sans-serif; fill: #20242a; }
+.small { font-size: 18px; } .label { font-size: 20px; font-weight: 600; }
+.axis { stroke: #50565f; stroke-width: 2; } .grid { stroke: #d8dde3; stroke-width: 1; }
+</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<text x="560" y="55" class="label" text-anchor="middle"><tspan x="560" dy="0">到达时刻的可用程度 →</tspan></text>
+<text x="282.5" y="105" class="label" text-anchor="middle"><tspan x="282.5" dy="0">无</tspan></text>
+<text x="467.5" y="105" class="label" text-anchor="middle"><tspan x="467.5" dy="0">粗粒度</tspan></text>
+<text x="652.5" y="105" class="label" text-anchor="middle"><tspan x="652.5" dy="0">亚秒</tspan></text>
+<text x="837.5" y="105" class="label" text-anchor="middle"><tspan x="837.5" dy="0">未量化</tspan></text>
+<text x="155" y="195.0" class="label" text-anchor="end"><tspan x="155" dy="0">原文</tspan></text>
+<text x="155" y="325.0" class="label" text-anchor="end"><tspan x="155" dy="0">块编号</tspan></text>
+<text x="155" y="455.0" class="label" text-anchor="end"><tspan x="155" dy="0">无</tspan></text>
+<text x="45" y="325.0" class="label" text-anchor="middle" transform="rotate(-90 45 325.0)">内容可用程度</text>
+<rect x="190" y="130" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<text x="282.5" y="183.0" class="small" text-anchor="middle"><tspan x="282.5" dy="0">ShareGPT</tspan><tspan x="282.5" dy="25">LMSYS-Chat</tspan></text>
+<rect x="375" y="130" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<rect x="560" y="130" width="185" height="130" fill="#f9edbd" stroke="#9ca3aa" stroke-width="1.5"/>
+<rect x="745" y="130" width="185" height="130" fill="#f9edbd" stroke="#9ca3aa" stroke-width="1.5"/>
+<text x="837.5" y="183.0" class="small" text-anchor="middle"><tspan x="837.5" dy="0">WildChat</tspan><tspan x="837.5" dy="25">（前端日志）</tspan></text>
+<rect x="190" y="260" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<text x="282.5" y="313.0" class="small" text-anchor="middle"><tspan x="282.5" dy="0">百炼轨迹</tspan><tspan x="282.5" dy="25">ACDC</tspan></text>
+<rect x="375" y="260" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<text x="467.5" y="301.0" class="small" text-anchor="middle"><tspan x="467.5" dy="0">Mooncake</tspan><tspan x="467.5" dy="25">ServeGen</tspan><tspan x="467.5" dy="25">RAGPulse / AgentX</tspan></text>
+<rect x="560" y="260" width="185" height="130" fill="#f9edbd" stroke="#9ca3aa" stroke-width="1.5"/>
+<rect x="745" y="260" width="185" height="130" fill="#f9edbd" stroke="#9ca3aa" stroke-width="1.5"/>
+<rect x="190" y="390" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<rect x="375" y="390" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<text x="467.5" y="443.0" class="small" text-anchor="middle"><tspan x="467.5" dy="0">BurstGPT</tspan><tspan x="467.5" dy="25">FineServe</tspan></text>
+<rect x="560" y="390" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+<text x="652.5" y="455.0" class="small" text-anchor="middle"><tspan x="652.5" dy="0">Azure</tspan></text>
+<rect x="745" y="390" width="185" height="130" fill="#ffffff" stroke="#9ca3aa" stroke-width="1.5"/>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 740" role="img" aria-labelledby="title desc">
+<title id="title">两组样本的评测设置</title>
+<desc id="desc">横向分组条形图，对比 2020—2025 年核心样本与 2026 年样本的九项评测设置。</desc>
+<style>
+text { font-family: 'Segoe UI', 'Noto Sans SC', sans-serif; fill: #20242a; }
+.small { font-size: 18px; } .label { font-size: 20px; font-weight: 600; }
+.axis { stroke: #50565f; stroke-width: 2; } .grid { stroke: #d8dde3; stroke-width: 1; }
+</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<line class="grid" x1="270.0" y1="90" x2="270.0" y2="630"/>
+<text x="270.0" y="660" class="small" text-anchor="middle"><tspan x="270.0" dy="0">0</tspan></text>
+<line class="grid" x1="406.0" y1="90" x2="406.0" y2="630"/>
+<text x="406.0" y="660" class="small" text-anchor="middle"><tspan x="406.0" dy="0">20</tspan></text>
+<line class="grid" x1="542.0" y1="90" x2="542.0" y2="630"/>
+<text x="542.0" y="660" class="small" text-anchor="middle"><tspan x="542.0" dy="0">40</tspan></text>
+<line class="grid" x1="678.0" y1="90" x2="678.0" y2="630"/>
+<text x="678.0" y="660" class="small" text-anchor="middle"><tspan x="678.0" dy="0">60</tspan></text>
+<line class="grid" x1="814.0" y1="90" x2="814.0" y2="630"/>
+<text x="814.0" y="660" class="small" text-anchor="middle"><tspan x="814.0" dy="0">80</tspan></text>
+<line class="grid" x1="950.0" y1="90" x2="950.0" y2="630"/>
+<text x="950.0" y="660" class="small" text-anchor="middle"><tspan x="950.0" dy="0">100</tspan></text>
+<text x="254" y="120" class="small" text-anchor="end"><tspan x="254" dy="0">ShareGPT</tspan></text>
+<rect x="270" y="98" width="312.8" height="16" fill="#a9c4dc"/>
+<rect x="270" y="120" width="170.0" height="16" fill="#c1553b"/>
+<text x="589.8" y="112" class="small" text-anchor="start"><tspan x="589.8" dy="0">46</tspan></text>
+<text x="447.0" y="134" class="small" text-anchor="start"><tspan x="447.0" dy="0">25</tspan></text>
+<text x="254" y="180" class="small" text-anchor="end"><tspan x="254" dy="0">真实生产轨迹</tspan></text>
+<rect x="270" y="158" width="312.8" height="16" fill="#a9c4dc"/>
+<rect x="270" y="180" width="598.4" height="16" fill="#c1553b"/>
+<text x="589.8" y="172" class="small" text-anchor="start"><tspan x="589.8" dy="0">46</tspan></text>
+<text x="875.4" y="194" class="small" text-anchor="start"><tspan x="875.4" dy="0">88</tspan></text>
+<text x="254" y="240" class="small" text-anchor="end"><tspan x="254" dy="0">泊松到达</tspan></text>
+<rect x="270" y="218" width="469.2" height="16" fill="#a9c4dc"/>
+<rect x="270" y="240" width="129.2" height="16" fill="#c1553b"/>
+<text x="746.2" y="232" class="small" text-anchor="start"><tspan x="746.2" dy="0">69</tspan></text>
+<text x="406.2" y="254" class="small" text-anchor="start"><tspan x="406.2" dy="0">19</tspan></text>
+<text x="254" y="300" class="small" text-anchor="end"><tspan x="254" dy="0">时间戳回放</tspan></text>
+<rect x="270" y="278" width="102.0" height="16" fill="#a9c4dc"/>
+<rect x="270" y="300" width="428.4" height="16" fill="#c1553b"/>
+<text x="379.0" y="292" class="small" text-anchor="start"><tspan x="379.0" dy="0">15</tspan></text>
+<text x="705.4" y="314" class="small" text-anchor="start"><tspan x="705.4" dy="0">63</tspan></text>
+<text x="254" y="360" class="small" text-anchor="end"><tspan x="254" dy="0">会话建模</tspan></text>
+<rect x="270" y="338" width="54.4" height="16" fill="#a9c4dc"/>
+<rect x="270" y="360" width="510.0" height="16" fill="#c1553b"/>
+<text x="331.4" y="352" class="small" text-anchor="start"><tspan x="331.4" dy="0">8</tspan></text>
+<text x="787.0" y="374" class="small" text-anchor="start"><tspan x="787.0" dy="0">75</tspan></text>
+<text x="254" y="420" class="small" text-anchor="end"><tspan x="254" dy="0">闭环设置</tspan></text>
+<rect x="270" y="398" width="0.0" height="16" fill="#a9c4dc"/>
+<rect x="270" y="420" width="170.0" height="16" fill="#c1553b"/>
+<text x="277.0" y="412" class="small" text-anchor="start"><tspan x="277.0" dy="0">0</tspan></text>
+<text x="447.0" y="434" class="small" text-anchor="start"><tspan x="447.0" dy="0">25</tspan></text>
+<text x="254" y="480" class="small" text-anchor="end"><tspan x="254" dy="0">输出长度机制</tspan></text>
+<rect x="270" y="458" width="54.4" height="16" fill="#a9c4dc"/>
+<rect x="270" y="480" width="258.4" height="16" fill="#c1553b"/>
+<text x="331.4" y="472" class="small" text-anchor="start"><tspan x="331.4" dy="0">8</tspan></text>
+<text x="535.4" y="494" class="small" text-anchor="start"><tspan x="535.4" dy="0">38</tspan></text>
+<text x="254" y="540" class="small" text-anchor="end"><tspan x="254" dy="0">块大小敏感性</tspan></text>
+<rect x="270" y="518" width="54.4" height="16" fill="#a9c4dc"/>
+<rect x="270" y="540" width="0.0" height="16" fill="#c1553b"/>
+<text x="331.4" y="532" class="small" text-anchor="start"><tspan x="331.4" dy="0">8</tspan></text>
+<text x="277.0" y="554" class="small" text-anchor="start"><tspan x="277.0" dy="0">0</tspan></text>
+<text x="254" y="600" class="small" text-anchor="end"><tspan x="254" dy="0">声明局限</tspan></text>
+<rect x="270" y="578" width="156.4" height="16" fill="#a9c4dc"/>
+<rect x="270" y="600" width="340.0" height="16" fill="#c1553b"/>
+<text x="433.4" y="592" class="small" text-anchor="start"><tspan x="433.4" dy="0">23</tspan></text>
+<text x="617.0" y="614" class="small" text-anchor="start"><tspan x="617.0" dy="0">50</tspan></text>
+<text x="610.0" y="710" class="label" text-anchor="middle"><tspan x="610.0" dy="0">占该层样本的比例（%）</tspan></text>
+<rect x="665" y="25" width="25" height="15" fill="#a9c4dc"/>
+<text x="700" y="39" class="small" text-anchor="start"><tspan x="700" dy="0">2020—25（N=13）</tspan></text>
+<rect x="840" y="25" width="25" height="15" fill="#c1553b"/>
+<text x="875" y="39" class="small" text-anchor="start"><tspan x="875" dy="0">2026（N=8）</tspan></text>
+</svg>

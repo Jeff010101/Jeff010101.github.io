@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 700" role="img" aria-labelledby="title desc">
+<title id="title">Five-aspect workload description framework</title>
+<desc id="desc">Workload taxonomy with five aspects—arrival process, lengths, content and reuse, session and dependency, and traffic class and routing—and three attributes outside the framework.</desc>
+<style>
+text { font-family: 'Segoe UI', 'Noto Sans SC', sans-serif; fill: #20242a; }
+.small { font-size: 18px; } .label { font-size: 20px; font-weight: 600; }
+.axis { stroke: #50565f; stroke-width: 2; } .grid { stroke: #d8dde3; stroke-width: 1; }
+</style>
+<rect width="100%" height="100%" fill="#fff"/>
+<rect x="330" y="35" width="740" height="70" rx="12" fill="#e8f0f7" stroke="#2b5d8a" stroke-width="3"/>
+<text x="700" y="79" class="label" text-anchor="middle"><tspan x="700" dy="0">Workload: request stream presented to the system under test</tspan></text>
+<line x1="700" y1="105" x2="150" y2="150" stroke="#8a9199" stroke-width="2"/>
+<rect x="25" y="150" width="250" height="58" rx="9" fill="#2c6fa820" stroke="#2c6fa8" stroke-width="3"/>
+<text x="150" y="186" class="label" text-anchor="middle"><tspan x="150" dy="0">1. Arrival process</tspan></text>
+<line x1="150" y1="208" x2="150" y2="242" stroke="#8a9199" stroke-width="2"/>
+<rect x="25" y="242" width="250" height="150" rx="9" fill="#fff" stroke="#2c6fa8" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="150" y="274" class="small" text-anchor="middle"><tspan x="150" dy="0">Rate function</tspan><tspan x="150" dy="25">Coefficient of variation</tspan><tspan x="150" dy="25">Interarrival family</tspan><tspan x="150" dy="25">Timestamp granularity</tspan></text>
+<line x1="700" y1="105" x2="425" y2="150" stroke="#8a9199" stroke-width="2"/>
+<rect x="300" y="150" width="250" height="58" rx="9" fill="#4e8f6220" stroke="#4e8f62" stroke-width="3"/>
+<text x="425" y="186" class="label" text-anchor="middle"><tspan x="425" dy="0">2. Lengths</tspan></text>
+<line x1="425" y1="208" x2="425" y2="242" stroke="#8a9199" stroke-width="2"/>
+<rect x="300" y="242" width="250" height="150" rx="9" fill="#fff" stroke="#4e8f62" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="425" y="274" class="small" text-anchor="middle"><tspan x="425" dy="0">Input distribution</tspan><tspan x="425" dy="25">Output distribution</tspan><tspan x="425" dy="25">Correlation</tspan><tspan x="425" dy="25">How output is set</tspan></text>
+<line x1="700" y1="105" x2="700" y2="150" stroke="#8a9199" stroke-width="2"/>
+<rect x="575" y="150" width="250" height="58" rx="9" fill="#c1553b20" stroke="#c1553b" stroke-width="3"/>
+<text x="700" y="186" class="label" text-anchor="middle"><tspan x="700" dy="0">3. Content and reuse</tspan></text>
+<line x1="700" y1="208" x2="700" y2="242" stroke="#8a9199" stroke-width="2"/>
+<rect x="575" y="242" width="250" height="150" rx="9" fill="#fff" stroke="#c1553b" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="700" y="274" class="small" text-anchor="middle"><tspan x="700" dy="0">Block index and size</tspan><tspan x="700" dy="25">Prefix sharing</tspan><tspan x="700" dy="25">Reuse rate</tspan><tspan x="700" dy="25">Measurement granularity</tspan></text>
+<line x1="700" y1="105" x2="975" y2="150" stroke="#8a9199" stroke-width="2"/>
+<rect x="850" y="150" width="250" height="58" rx="9" fill="#8a6ba120" stroke="#8a6ba1" stroke-width="3"/>
+<text x="975" y="186" class="label" text-anchor="middle"><tspan x="975" dy="0">4. Session and dependency</tspan></text>
+<line x1="975" y1="208" x2="975" y2="242" stroke="#8a9199" stroke-width="2"/>
+<rect x="850" y="242" width="250" height="150" rx="9" fill="#fff" stroke="#8a6ba1" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="975" y="274" class="small" text-anchor="middle"><tspan x="975" dy="0">Inter-request dependency</tspan><tspan x="975" dy="25">Think time</tspan><tspan x="975" dy="25">Open-/closed-loop</tspan><tspan x="975" dy="25">Session tree</tspan></text>
+<line x1="700" y1="105" x2="1250" y2="150" stroke="#8a9199" stroke-width="2"/>
+<rect x="1125" y="150" width="250" height="58" rx="9" fill="#c08a2e20" stroke="#c08a2e" stroke-width="3"/>
+<text x="1250" y="186" class="label" text-anchor="middle"><tspan x="1250" dy="0">5. Class and routing</tspan></text>
+<line x1="1250" y1="208" x2="1250" y2="242" stroke="#8a9199" stroke-width="2"/>
+<rect x="1125" y="242" width="250" height="150" rx="9" fill="#fff" stroke="#c08a2e" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="1250" y="274" class="small" text-anchor="middle"><tspan x="1250" dy="0">Class partition</tspan><tspan x="1250" dy="25">Per-class share</tspan><tspan x="1250" dy="25">Target model</tspan><tspan x="1250" dy="25">Per-class SLO</tspan></text>
+<text x="700" y="443" class="label" text-anchor="middle"><tspan x="700" dy="0">Request attributes outside the framework</tspan></text>
+<rect x="225" y="480" width="300" height="70" rx="10" fill="#f4f4f4" stroke="#777" stroke-width="2" stroke-dasharray="3 5"/>
+<text x="375" y="522" class="label" text-anchor="middle"><tspan x="375" dy="0">Specific token values</tspan></text>
+<rect x="550" y="480" width="300" height="70" rx="10" fill="#f4f4f4" stroke="#777" stroke-width="2" stroke-dasharray="3 5"/>
+<text x="700" y="522" class="label" text-anchor="middle"><tspan x="700" dy="0">Multimodal payload</tspan></text>
+<rect x="875" y="480" width="300" height="70" rx="10" fill="#f4f4f4" stroke="#777" stroke-width="2" stroke-dasharray="3 5"/>
+<text x="1025" y="522" class="label" text-anchor="middle"><tspan x="1025" dy="0">Request lifecycle events</tspan></text>
+</svg>
