@@ -19,11 +19,11 @@ image:
   alt_text: "Abstract distributed AI inference system with token streams, accelerator nodes, agent branches, cache blocks, and workload traces."
 ---
 
-[Download the English paper as PDF (v0.5)](/blog/llm-inference-system-workload-survey/survey-en-v0.5.pdf)
+[Download the English paper as PDF (v1.1)](/blog/llm-inference-system-workload-survey/survey-en-v1.1.pdf)
 
-*Paper version v0.5, dated 2026-09-06.*
+*Paper version v1.1, dated 2026-09-07.*
 
-> **Abstract.** Performance results for inference serving systems depend on the workload under which they are obtained, yet the workload itself has received little systematic attention. We define a workload as the request stream presented to the system under test, and describe it along five aspects: the arrival process, lengths, request content and its reuse relation, session dependency, and traffic class with model routing. We state the conditions under which this description holds, and identify three classes of request attribute that fall outside it. We then report three studies. First, we map the public workload datasets and load-generation tools available as of September 2026: none of the production traces we examined retains the original token sequence, and arrival times or content identifiers are generally aggregated or block-coded. We give the direction and magnitude of the bias this introduces. Second, we code the experimental setup of 29 serving papers against a fixed set of eight fields: 1 reports a sensitivity analysis over KV cache block size; roughly half of the 2020–2025 sample fixes or truncates output length, and most do not state the mechanism; none of the four simulators we examined replays production arrival timestamps. Third, within our 2026 sample we observe two coexisting evaluation practices: work on real systems tends to use trace replay, while simulation work tends to validate on fixed lengths and ShareGPT. We close with a checklist for evaluation setups and a list of open questions. This study is not a prevalence estimate for the field; our sampling and its limitations are discussed in the section on threats to validity.
+> **Abstract.** Performance results for inference serving systems depend on the workload under which they are obtained, yet the workload itself has received little systematic attention. We define a workload as the request stream presented to the system under test, and describe it along five aspects: the arrival process, lengths, request content and its reuse relation, session and dependency, and traffic class and model routing. We state the conditions under which this description holds, and identify three classes of request attribute that fall outside it. We then report three studies. First, we map the public workload datasets and load-generation tools available as of September 2026: none of the production traces we examined retains the original token sequence, and arrival times or content identifiers are generally aggregated or block-coded. We give the direction and magnitude of the bias this introduces. Second, we code the experimental setup of 29 serving papers against a fixed set of eight fields: 1 reports a sensitivity analysis over KV cache block size; roughly half of the 2020–2025 sample fixes or truncates output length, and most do not state the mechanism; none of the four simulators we examined replays production arrival timestamps. Third, within our 2026 sample we observe two coexisting evaluation practices: work on real systems tends to use trace replay, while simulation work tends to validate on fixed lengths and ShareGPT. We close with a checklist for evaluation setups and a list of open questions. This study is not a prevalence estimate for the field; our sampling and its limitations are discussed in the section on threats to validity.
 
 **Keywords:** large language model; inference serving; workload characterization; evaluation methodology; prefix caching
 
@@ -50,11 +50,12 @@ experts from the product of the hidden state and the expert weights; speculative
 acceptance from the logits of the draft and target models; and when generation stops depends on when
 the model produces the end-of-sequence token.
 
-The same publisher is not consistent across artifacts. When SemiAnalysis released the AgentX agent
-trace, it replaced the original content with 64-token block indices; yet the benchmark’s scenario
-setup also states that, because synthetic tokens change the acceptance rate of speculative decoding,
-the acceptance rate is fixed to a constant. The two choices rest on different assumptions about
-content, and the range of metrics each supports needs to be stated separately.
+A single publisher is not consistent across its artifacts. When SemiAnalysis released the
+AgentX agent trace, it replaced the original content with 64-token block indices; yet the
+benchmark’s scenario setup also states that, because synthetic tokens change the
+acceptance rate of speculative decoding, the acceptance rate is fixed to a constant. The
+two choices rest on different assumptions about content, and the range of metrics each
+supports needs to be stated separately.
 
 These examples point to a gap in existing surveys, which the next subsection develops.
 
@@ -75,7 +76,7 @@ examined and their coverage.
 | Park et al. [[10]](#ref-park2025engines) | Inference engines | – | – | – |
 | Li et al. [[11]](#ref-li2024hpec) | Optimization techniques | – | – | – |
 | Pan and Li [[12]](#ref-pan2025survey) | Request handling and memory | – | – | – |
-| Zhou et al. [[78]](#ref-zhou2024efficient) | Optimization layers | – | ○ | ○ |
+| Zhou et al. [[77]](#ref-zhou2024efficient) | Optimization layers | – | ○ | ○ |
 | **This work** | **Workload** | ● | ● | ● |
 
 All six take serving mechanisms or optimization techniques as the organizing thread, and we found no
@@ -87,10 +88,10 @@ scheduling sections. The statement we can support is this: among the 6 surveys w
 uses workload characterization as a primary axis of organization.
 
 We divide labor with two kinds of adjacent work. Relative to the discussion of evaluation
-methodology [[15]](#ref-agrawal2025evaluating), which enumerates common evaluation pitfalls for
+methodology [[14]](#ref-agrawal2025evaluating), which enumerates common evaluation pitfalls for
 practitioners, we focus on a description framework for the workload itself and on surveying public
 data. Relative to single-dataset characterization
-work [[21]](#ref-xiang2026servegen), [[22]](#ref-wang2025burstgpt), [[16]](#ref-wang2025kvcachewild), which analyzes one
+work [[20]](#ref-xiang2026servegen), [[21]](#ref-wang2025burstgpt), [[15]](#ref-wang2025kvcachewild), which analyzes one
 dataset in depth, we make horizontal comparisons across datasets.
 
 ### What we do
@@ -158,9 +159,9 @@ memory-bandwidth-bound.
 
 The two stages have different resource profiles, which has led to several system designs. Deploying
 the two stages on separate devices is called **prefill–decode
-disaggregation** [[1]](#ref-patel2024splitwise), [[36]](#ref-zhong2024distserve); splitting prefill into
+disaggregation** [[1]](#ref-patel2024splitwise), [[35]](#ref-zhong2024distserve); splitting prefill into
 chunks that interleave with decode is called **chunked
-prefill** [[34]](#ref-agrawal2023sarathi), [[35]](#ref-agrawal2024sarathiserve). The trade-off between them
+prefill** [[33]](#ref-agrawal2023sarathi), [[34]](#ref-agrawal2024sarathiserve). The trade-off between them
 depends on the input-to-output length ratio of the workload, so the workload’s length distribution
 directly affects evaluation conclusions for such designs.
 
@@ -181,13 +182,13 @@ of Section [6](#sec-content).
 
 ### Batching and scheduling
 
-**Continuous batching** [[33]](#ref-yu2022orca) reorganizes the batch at every decode step:
+**Continuous batching** [[32]](#ref-yu2022orca) reorganizes the batch at every decode step:
 finished requests leave the batch and newly arrived requests join at any time. The composition of
 the batch therefore depends on request arrival times and remaining output lengths, both of which are
 workload properties. On this basis, some engines further co-schedule prefill and decode within a
-batch [[43]](#ref-holmes2024fastgen), or reorder the operators within a batch to maximize
-throughput [[44]](#ref-zhu2024nanoflow). By contrast, systems for offline batch
-processing [[45]](#ref-sheng2023flexgen) are not subject to latency constraints and can
+batch [[42]](#ref-holmes2024fastgen), or reorder the operators within a batch to maximize
+throughput [[43]](#ref-zhu2024nanoflow). By contrast, systems for offline batch
+processing [[44]](#ref-sheng2023flexgen) are not subject to latency constraints and can
 organize the batch in an entirely different way—a distinction showing that evaluation conclusions
 for a batching strategy depend on whether the workload is online or offline.
 
@@ -311,7 +312,26 @@ skeleton for a text inference workload. We do not use the word “complete.”
 | Session structure | ● | ●●● | ● | ●● | ○ | ○ | ●● |
 | Traffic class | ●● | ●● | ●● | ●●● | ●● | ● | ●●● |
 
-**Basis for the ratings.** Arrival × scheduling: for comparable mechanisms, the relative improvement reported under open-loop and closed-loop settings differs by roughly an order of magnitude (Section [10](#sec-audit); this comparison does not control for implementation differences). Input length × prefill–decode disaggregation: the optimal resource split reported by Splitwise varies with workload class, (35,5) for the code class and (25,15) for the conversation class [[1]](#ref-patel2024splitwise). Output length × batching and scheduling: ignoring the end-of-sequence token makes output length determined by the load-generator setting (Section [5](#sec-length)). Content and reuse × prefix caching: on ACDC offline trace a, raising the block size from 16 to 256 lowers the prefix reuse rate from 46.9% to 2.8% (Section [6](#sec-content)). Content and reuse × mixture-of-experts: DeepSeek reports a 45.8× load difference between the hottest and coldest expert in its production environment. Content and reuse × speculative decoding: AgentX fixes the acceptance rate to a constant because synthetic tokens change it. Session × prefix caching: AgentX has a within-session reuse rate of 98.9%, with very little cross-session reuse. Traffic class × scheduling and capacity: in BurstGPT a single class accounts for 77.7%, and across the four classes the median output length differs by 9.2× and the arrival coefficient of variation by 22× [[22]](#ref-wang2025burstgpt).
+**Basis for the ratings.** Arrival $\times$ scheduling: for comparable mechanisms, the
+relative improvement reported under open-loop and closed-loop settings differs by roughly an
+order of magnitude (Section [10](#sec-audit); this comparison does not control for
+implementation differences).
+Input length $\times$ prefill–decode disaggregation: the optimal resource split reported by
+Splitwise varies with workload class, (35,5) for the code class and (25,15) for the
+conversation class [[1]](#ref-patel2024splitwise).
+Output length $\times$ batching and scheduling: ignoring the end-of-sequence token makes
+output length determined by the load-generator setting (Section [5](#sec-length)).
+Content and reuse $\times$ prefix caching: on ACDC offline trace a, raising the block size from
+16 to 256 lowers the prefix reuse rate from 46.9% to 2.8% (Section [6](#sec-content)).
+Content and reuse $\times$ mixture-of-experts: DeepSeek reports a 45.8$\times$ load
+difference between the hottest and coldest expert in its production environment.
+Content and reuse $\times$ speculative decoding: AgentX fixes the acceptance rate to a
+constant because synthetic tokens change it.
+Session $\times$ prefix caching: AgentX has a within-session reuse rate of 98.9%, with very
+little cross-session reuse.
+Traffic class $\times$ scheduling and capacity: in BurstGPT a single class accounts for
+77.7%, and across the four classes the median output length differs by 9.2$\times$ and the
+arrival coefficient of variation by 22$\times$ [[21]](#ref-wang2025burstgpt).
 
 ### Overview of public datasets
 
@@ -332,19 +352,19 @@ not listed.
 | Azure LLM 2023* | Microsoft | Sub-second, absolute | none | none | Split into conversation and code files |
 | Azure LLM 2024 | Microsoft | Sub-second, absolute | none | none | Same fields as 2023 |
 | Azure LMM 2025 | Microsoft | Sub-second, absolute | none | none | The only multimodal trace to record image counts |
-| BurstGPT*[[22]](#ref-wang2025burstgpt) | University service | Integer seconds | none | In some files | Column counts differ across files |
+| BurstGPT*[[21]](#ref-wang2025burstgpt) | University service | Integer seconds | none | In some files | Column counts differ across files |
 | Mooncake*[[3]](#ref-qin2025mooncake) | Moonshot AI | Millisecond field (≈3 s measured) | Block index, block size 512 | none | Split into conversation, tool, and synthetic classes |
-| ServeGen*[[21]](#ref-xiang2026servegen) | Alibaba | 600-s rate table | Block hash, block size 16 | In the multi-turn file | Online and multi-turn files |
-| ACDC*[[20]](#ref-yang2026acdc) | Alibaba | none (whole-batch submission) | Block index, block size 16 | none | Offline batch, six files |
-| Bailian trace[[16]](#ref-wang2025kvcachewild) | Alibaba | Relative; absolute removed | Block hash, block size 16 | Parent–child chain | Public release is a two-hour sample |
+| ServeGen*[[20]](#ref-xiang2026servegen) | Alibaba | 600-s rate table | Block hash, block size 16 | In the multi-turn file | Online and multi-turn files |
+| ACDC*[[19]](#ref-yang2026acdc) | Alibaba | none (whole-batch submission) | Block index, block size 16 | none | Offline batch, six files |
+| Bailian trace[[15]](#ref-wang2025kvcachewild) | Alibaba | Relative; absolute removed | Block hash, block size 16 | Parent–child chain | Public release is a two-hour sample |
 | FineServe | PPIO | Inconsistent statements; internal resolution no finer than 1 s | none | none | Stratified by architecture, scale, and intent |
 | RAGPulse | RAG service | Integer seconds | Hashes decomposed by semantic component | Yes | The only retrieval-augmented service trace |
 | *(b) Agent traces* |  |  |  |  |  |
 | AgentX* | Agent framework | Relative, closed-loop | Block index, block size 64, valid within a session | Dependency graph | Includes inter-request dependencies |
 | *(c) Front-end conversation logs (not server-side)* |  |  |  |  |  |
-| WildChat[[77]](#ref-zhao2024wildchat) | Chat front-end | Microsecond, absolute, unquantized | Raw text | Yes | No token counts, no queueing information |
+| WildChat[[76]](#ref-zhao2024wildchat) | Chat front-end | Microsecond, absolute, unquantized | Raw text | Yes | No token counts, no queueing information |
 | ShareGPT* | User-shared | none | Raw text | Yes | The de facto default length corpus |
-| LMSYS-Chat-1M*[[76]](#ref-zheng2024lmsys) | Chat arena | none | Raw text | Yes | No timestamp field in the corpus itself |
+| LMSYS-Chat-1M*[[75]](#ref-zheng2024lmsys) | Chat arena | none | Raw text | Yes | No timestamp field in the corpus itself |
 
 The grouping in the table itself points to a problem. Group (a) has real arrival times and
 server-side context, but none of it retains the raw text; group (c) retains the raw text—and
@@ -375,10 +395,10 @@ reasons; our concern is the bias that this representation introduces, and the la
 evaluation of that bias in existing work.
 
 Several other works report production data of considerable scale but release no trace, including a
-provider dataset covering 12 months and 6.12 billion requests [[72]](#ref-nixon2026year) (whose
+provider dataset covering 12 months and 6.12 billion requests [[71]](#ref-nixon2026year) (whose
 footnote states that release has been approved, but which we did not find released as of our
 search), a code-completion service dataset covering 3.2 million users and 761 million
-calls [[67]](#ref-liu2026copilot), and several artifacts announced as forthcoming open source
+calls [[66]](#ref-liu2026copilot), and several artifacts announced as forthcoming open source
 whose repositories do not exist. Were these data released, they would appreciably change the picture
 in the table above.
 
@@ -438,21 +458,23 @@ Table [4](#tab-tsquant) gives the measured results.
 | Mooncake tool | 23,608 | 1,180 | 5.0% | ≈3 s |
 | BurstGPT | 1,404,294 | 767,313 | 54.6% | 1 s |
 
-A low ratio does not by itself mean the data are unusable, since concurrent arrivals also produce
-identical timestamps; the deciding test is whether the values fall on a regular grid. Mooncake’s
-interval values concentrate on three numbers: 3000 ms occurs 651 times, 2999 ms 263 times, and
-3001 ms 260 times, with the rest totaling 5; the median number of requests per timestamp is 10. This
-shape is hard to explain by chance same-instant arrivals and is closer to the result of aggregation
-over a fixed window, though genuine periodic batch submission cannot be entirely ruled out.
+A low ratio does not by itself mean the data are unusable, since concurrent arrivals also
+produce identical timestamps; the deciding test is whether the values fall on a regular
+grid. Mooncake’s interval values concentrate on three numbers: 3000 ms occurs 651 times,
+2999 ms 263 times, and 3001 ms 260 times, with the rest totaling 5; the median number of
+requests per timestamp is 10. This shape is hard to explain by chance same-instant arrivals
+and is closer to the result of aggregation over a fixed window, though genuine periodic
+batch submission cannot be entirely ruled out.
 
-This yields two limitations. First, without an additional within-bucket arrival model, this trace is
-not suitable for directly replaying the queueing process or time to first token, because the order
-and spacing of requests within a bucket have been lost, and queue behavior is nonlinear in both.
-Second, counting arrivals or offered load over windows much larger than 3 s is affected little by
-this aggregation. Note that this does not mean throughput conclusions are uniformly unaffected:
-artificial batched arrivals likewise change the system’s actual throughput. The coefficients of
-variation the dataset reports (3.03 for conversation, 4.36 for tool) reflect the aggregated shape
-and should not be read directly as the burstiness of the original workload.
+This yields two limitations. First, without an additional within-bucket arrival model, this
+trace is not suitable for directly replaying the queueing process or time to first token,
+because the order and spacing of requests within a bucket have been lost, and queue behavior
+is nonlinear in both. Second, counting arrivals or offered load over windows much larger than
+3 s is affected little by this aggregation. Note that this does not mean throughput
+conclusions are uniformly unaffected: artificial batched arrivals likewise change the
+system’s actual throughput. The coefficients of variation the dataset reports (3.03 for
+conversation, 4.36 for tool) reflect the aggregated shape and should not be read directly as
+the burstiness of the original workload.
 
 This recording granularity is not easy to see from the schema. vLLM’s trace loader offers a
 `timed-trace-sec-multiplier` parameter, and its Mooncake example passes 0.001 explicitly, indicating
@@ -462,16 +484,16 @@ preserves this periodic aggregation as is.
 
 ### The production traces we analyzed generally depart from the Poisson assumption
 
-ServeGen provides the finest-grained data we have seen: across 36,969 active intervals from 422
-clients on a production platform, the median coefficient of variation is 1.61, with 13.3% at most 1
-and 20.8% above 5; the fitted interarrival distributions are Gamma (61%) and Weibull (38%), with no
-exponential.
+ServeGen provides the finest-grained data we have seen: across 36,969 active intervals from
+422 clients on a production platform, the median coefficient of variation is 1.61, with
+13.3% at most 1 and 20.8% above 5; the fitted interarrival distributions are Gamma (61%)
+and Weibull (38%), with no exponential.
 
-The interarrival times of multi-agent traffic were also reported in 2026 to depart from the Poisson
-assumption, with interarrival distributions conditioned on
-topology [[13]](#ref-multiagent2026). These results agree with classical network-traffic
-work [[6]](#ref-leland1993self) and indicate that the applicability of Poisson arrivals should
-be checked before adopting them in inference-serving settings.
+The interarrival times of multi-agent traffic were also reported in 2026 to depart from the
+Poisson assumption, with interarrival distributions conditioned on topology [[70]](#ref-lamagna2026multiagent).
+These results agree with classical network-traffic work [[6]](#ref-leland1993self) and indicate
+that the applicability of Poisson arrivals should be checked before adopting them in
+inference-serving settings.
 
 We add that the rate, CV, and marginal distribution family cannot capture autocorrelation,
 long-range dependence, or synchronization effects across clients. The diagnostics above serve only
@@ -480,19 +502,19 @@ analysis.
 
 ### Arrival settings in the literature
 
-By the coding results of Section [10](#sec-audit), of the 13 papers in the 2020–2025
-sample, 9 use Poisson arrivals and 2 replay real timestamps.
+By the coding results of Section [10](#sec-audit), of the 13 papers in the 2020–2025 sample,
+9 use Poisson arrivals and 2 replay real timestamps.
 
 The experimental-setup section of vLLM writes [[2]](#ref-kwon2023vllm): “Since these datasets
 do not include timestamps, we generate request arrival times using Poisson distribution with
-different request rates.” DistServe [[36]](#ref-zhong2024distserve) and
-FastServe [[37]](#ref-wu2023fastserve) give the same rationale, and FastServe explicitly notes
+different request rates.” DistServe [[35]](#ref-zhong2024distserve) and
+FastServe [[36]](#ref-wu2023fastserve) give the same rationale, and FastServe explicitly notes
 that it follows prior work. The wording of the three papers is very close, but we can only observe
 the repeated appearance of this rationale and cannot determine its path of propagation: FastServe
 and DistServe have overlapping authors, and the chronological order of the versions would need to be
 checked against version history to establish.
 
-For contrast, AlpaServe [[38]](#ref-li2023alpaserve) cuts the original trace into time windows
+For contrast, AlpaServe [[37]](#ref-li2023alpaserve) cuts the original trace into time windows
 and fits a Gamma process within each window using two parameters, rate and coefficient of variation,
 a practice inherited from earlier serving-system work. The same paper states that no public
 production inference trace existed at the time, so it substituted a function-call trace from
@@ -502,11 +524,11 @@ characteristics of the arrival process. We do not attribute a cause for this phe
 
 The arrival process deserves separate treatment because the benefit of several mechanisms rests
 directly on its shape. Scheduling work aimed at load balancing and
-migration [[39]](#ref-sun2024llumnix) depends on the difference in instantaneous load across
+migration [[38]](#ref-sun2024llumnix) depends on the difference in instantaneous load across
 instances, and that difference is set by the burstiness of arrivals; work aimed at the
-streaming-output experience [[40]](#ref-liu2024andes) defines user-perceived smoothness as a
+streaming-output experience [[39]](#ref-liu2024andes) defines user-perceived smoothness as a
 time-varying quantity, and its evaluation conclusions likewise depend on the distribution of
-requests over time; serverless inference serving [[41]](#ref-fu2024serverlessllm) takes
+requests over time; serverless inference serving [[40]](#ref-fu2024serverlessllm) takes
 cold-start overhead as its central problem, and how often cold starts occur depends on the long-tail
 shape of interarrival times. Each of these works adopts a different arrival setting, and we did not
 find any comparison among them under a unified arrival process.
@@ -562,11 +584,12 @@ also bimodal: 61.3% of requests match only one block, and 21.8% match more than 
 36.6% total reuse rate the dataset reports comes mainly from the latter. Designing a cache policy
 around the mean would depart from the actual distribution.
 
-**Widely differing prefill-to-decode ratios.** ACDC’s offline traces d and e sit at opposite ends:
-the former has a median input of 56 and median output of 1,468, a ratio of about 1 to 26; the latter
-has a median input of 707 and an output of 5 throughout, a ratio of about 141 to 1; AgentX is about
-395 to 1. A conclusion claimed to hold for the “typical workload” should state which part of this
-range it holds for.
+**Widely differing prefill-to-decode ratios.** 
+ACDC’s offline traces d and e sit at opposite ends: the former has a median input of 56
+and median output of 1,468, a ratio of about 1 to 26; the latter has a median input of 707
+and an output of 5 throughout, a ratio of about 141 to 1; AgentX is about 395 to 1. A conclusion
+claimed to hold for the “typical workload” should state which part of this range it holds
+for.
 
 ### Correlation between input and output length
 
@@ -586,15 +609,15 @@ data.
 Output length is unknown at a request’s arrival, a property that gives rise to a separate line of
 research.
 
-One kind of work tries to predict length to improve scheduling. $S^3$ [[57]](#ref-jin2023s3)
+One kind of work tries to predict length to improve scheduling. $S^3$ [[56]](#ref-jin2023s3)
 trains a classifier to predict the output-length bin and allocates device memory accordingly to
-raise batch occupancy; sequence scheduling [[58]](#ref-zheng2023seqsched) uses the model itself
+raise batch occupancy; sequence scheduling [[57]](#ref-zheng2023seqsched) uses the model itself
 to anticipate reply length and groups requests of similar length into the same batch. Both require a
 way to handle prediction error, because underestimation leads to reallocation.
 
 Another kind does not predict length but makes the system insensitive to length uncertainty.
-SuperServe [[59]](#ref-khare2023superserve) adjusts model size for unpredictable workloads;
-tail-aware scheduling [[24]](#ref-beyondpred2026) is explicitly premised on not relying on
+SuperServe [[58]](#ref-khare2023superserve) adjusts model size for unpredictable workloads;
+tail-aware scheduling [[23]](#ref-beyondpred2026) is explicitly premised on not relying on
 prediction and is designed for tail latency rather than mean latency. The premises of these two
 lines are mutually exclusive: the benefit of the former rises with prediction accuracy, while the
 value of the latter shows precisely when prediction is unreliable. We did not find a direct
@@ -602,9 +625,9 @@ comparison of the two under the same workload.
 
 The shape of the length distribution also determines whether certain system forms hold. In scenarios
 typified by retrieval-augmented generation and recommendation, output length is extremely short,
-sometimes a single token, and an engine for such workloads [[60]](#ref-du2025prefillonly) omits
+sometimes a single token, and an engine for such workloads [[59]](#ref-du2025prefillonly) omits
 the decode stage entirely; conversely, long-context
-work [[55]](#ref-wu2024loongserve), [[56]](#ref-lin2024infinitellm) targets the case where input length far
+work [[54]](#ref-wu2024loongserve), [[55]](#ref-lin2024infinitellm) targets the case where input length far
 exceeds single-device memory, and the benefit of its elastic sequence parallelism and distributed
 attention grows with input length. The applicable range of these two lines is divided by the
 prefill-to-decode ratio described in Section [5](#sec-length), and that ratio differs by
@@ -616,12 +639,11 @@ Load-testing tools commonly force generation to a set length by ignoring the end
 This setting disables the model’s natural termination mechanism and makes output length determined
 mainly by the load-test configuration.
 
-The coding results of Section [10](#sec-audit) show that about half the papers in the
-2020–2025 sample fix or truncate output length, of which 1 states the mechanism fully and 1
-partially.
+The coding results of Section [10](#sec-audit) show that about half the papers in the 2020–2025
+sample fix or truncate output length, of which 1 states the mechanism fully and 1 partially.
 
 Some agent work in the 2026 sample also forces the output length, but for a different stated reason:
-to keep the cross-turn trace consistent. SMetric [[17]](#ref-wang2026smetric) notes that a
+to keep the cross-turn trace consistent. SMetric [[16]](#ref-wang2026smetric) notes that a
 divergence between the evaluated model’s reply and the recorded trace breaks the KV cache reuse
 pattern in two ways—the generated length may differ, and the history recorded for later requests no
 longer matches the tokens the serving instance has actually cached—so it ignores the end-of-sequence
@@ -634,18 +656,18 @@ quantified in any report we found.
 
 ### Length distribution affects the interpretation of normalized metrics
 
-A 2026 energy-characterization study [[23]](#ref-vellaisamy2026energy) reports that, at fixed
-hardware and batch size, raising output length from 10 to 512 tokens lowers per-token energy from
-7.46 J to 0.72 J and raises the total energy of a single window from 1.19 kJ to 5.93 kJ; the gain of
-batch size 16 over batch size 1 falls from 6.31$\times$ at context 512 to 1.17$\times$ at
-context 4K.
+A 2026 energy-characterization study [[22]](#ref-vellaisamy2026energy) reports that, at fixed hardware
+and batch size, raising output length from 10 to 512 tokens lowers per-token energy from 7.46 J
+to 0.72 J and raises the total energy of a single window from 1.19 kJ to 5.93 kJ; the gain of
+batch size 16 over batch size 1 falls from 6.31$\times$ at context 512 to 1.17$\times$ at context
+4K.
 
 A token-normalized metric therefore depends on the workload’s length distribution, and a report of
 “per-token cost” should give the length distribution alongside it, or the number is hard to
 interpret.
 
 A similar situation holds for latency metrics. A 2026 scheduling
-study [[24]](#ref-beyondpred2026) reports that, comparing shortest-job-first against an oracle
+study [[23]](#ref-beyondpred2026) reports that, comparing shortest-job-first against an oracle
 predictor, mean end-to-end latency improves by 11.1% and P95 by 12.5%, while P99 rises by 11.2%. The
 mean and P99 reflect different facets of the policy, and reporting only one of them would highlight
 a different conclusion, so multiple percentiles should be reported together.
@@ -657,7 +679,7 @@ a different conclusion, so multiple percentiles should be reported together.
 The content aspect affects prefix caching, expert routing, and speculative decoding at the same
 time, yet public data retains the least about this aspect.
 
-### Content Representation in Public Data
+### Content representation in public data
 
 Among the production traces we examined, the ones that provide content information use block indices
 rather than raw text; the rest (such as Azure and BurstGPT) provide no content field at all, see
@@ -684,50 +706,50 @@ the engine’s cache-management granularity only when the trace’s block length
 engine’s KV cache block length; the case where the two differ is discussed in
 Section [6.4](#sec-threeerr).
 
-### System Mechanisms that Depend on Content Reuse
+### System mechanisms that depend on content reuse
 
 The reuse relation constitutes a separate aspect because a body of mechanisms has formed around it,
 and the benefit of these mechanisms is determined directly by the reuse structure.
 
-**Organizing the cache by prefix.** SGLang[[46]](#ref-zheng2024sglang) organizes cached
+**Organizing the cache by prefix.** SGLang[[45]](#ref-zheng2024sglang) organizes cached
 prefixes in a radix tree so that multiple requests share their common part; Prompt
-Cache[[47]](#ref-gim2024promptcache) further allows reuse of non-contiguous modular segments,
+Cache[[46]](#ref-gim2024promptcache) further allows reuse of non-contiguous modular segments,
 at the cost of having to declare the reusable structure in advance. The benefit of both grows with
 the share of cross-request sharing, and this share is a property of the workload, not of the system.
 
-**Bringing reuse into scheduling.** Preble[[50]](#ref-srivatsa2025preble) makes prefix sharing
+**Bringing reuse into scheduling.** Preble[[49]](#ref-srivatsa2025preble) makes prefix sharing
 an objective of distributed scheduling, placing requests with the same prefix on the same instance;
-MemServe[[51]](#ref-hu2024memserve) shares context across instances with an elastic memory pool
+MemServe[[50]](#ref-hu2024memserve) shares context across instances with an elastic memory pool
 under a disaggregated architecture. The evaluation conclusions of this line of work are most
 sensitive to the sharing structure of the workload: if the requests in the test workload are
 independent of one another, no difference appears between scheduling policies.
 
-**Relaxing the “exactly identical” requirement.** CacheBlend[[48]](#ref-yao2025cacheblend)
+**Relaxing the “exactly identical” requirement.** CacheBlend[[47]](#ref-yao2025cacheblend)
 targets the retrieval-augmented setting, fusing cached segments from multiple non-prefix positions
 before use and recomputing a small number of positions;
-Cache-Craft[[52]](#ref-agarwal2025cachecraft) manages the cache of retrieved segments in a
+Cache-Craft[[51]](#ref-agarwal2025cachecraft) manages the cache of retrieved segments in a
 blockwise manner. These two works show that the range of what is reusable depends on the tolerance
 for loss in generation quality, so the “reuse rate” as a number itself depends on the reuse
-criterion adopted. CacheGen[[49]](#ref-liu2024cachegen) compresses the already-computed cache
+criterion adopted. CacheGen[[48]](#ref-liu2024cachegen) compresses the already-computed cache
 and transfers it across nodes, and its benefit depends on the probability that the cache is used
 again.
 
-**Changing how the cache is stored.** vAttention[[53]](#ref-prabhu2025vattention) points out
+**Changing how the cache is stored.** vAttention[[52]](#ref-prabhu2025vattention) points out
 that paging is not the only way to achieve dynamic GPU-memory management, and argues for keeping
 tensors contiguous through a virtual-memory mechanism. This route relates to block size differently
 from the paging approach, so how the block-granularity bias described in
 Section [6.4](#sec-threeerr) manifests under this form needs separate analysis. A fuller
-account of KV cache management is given in a related survey[[54]](#ref-li2026kvsurvey).
+account of KV cache management is given in a related survey[[53]](#ref-li2026kvsurvey).
 
 What these mechanisms have in common is that evaluating them requires a workload with a real sharing
 structure, and Section [3.3](#sec-datasets) has shown that the sharing structure in public
 data is given as block indices. We now explain the effect of this representation on measurement
 results.
 
-### Effect of Block Size on Reuse-Rate Measurement
+### Effect of block size on reuse-rate measurement
 
 The measured reuse rate depends on the block size used for the measurement. We ran a coarsening
-experiment on ACDC offline trace a [[20]](#ref-yang2026acdc) (native block size 16) as the
+experiment on ACDC offline trace a [[19]](#ref-yang2026acdc) (native block size 16) as the
 baseline: we merge several adjacent 16-token blocks into a larger block (hereafter coarsening),
 recompute the prefix reuse rate, and fix the denominator at the true total input. The results are
 given in Table [6](#tab-blockcliff).
@@ -789,7 +811,7 @@ general criterion. A more appropriate reference quantity would be the distributi
 lengths, not the median input length; obtaining that distribution requires recomputation per trace,
 and we did not complete this step for all datasets.
 
-### Three Classes of Bias from the Block-Level Representation
+### Three classes of bias from the block-level representation
 
 <span id="sec-threeerr"></span>
 
@@ -804,28 +826,36 @@ segment by $S \bmod B_t$ tokens relative to $S$. If the remainder is assumed to 
 distributed over $\{0,1,\dots,B_t-1\}$, its expectation is $(B_t-1)/2$. Whether this assumption
 holds depends on the distribution of shared-prefix lengths, and needs to be checked per trace.
 
-We ran one such check on ACDC offline trace a: taking the measurement at block size 16 as the
-reference, after coarsening to 64 each hit undercounts by 31.1 tokens on average
-($(8{,}511{,}920-6{,}911{,}936)/51{,}428$, the denominator being the number of requests with a hit
-on this trace). Under the uniform-remainder assumption, the expected additional loss from coarsening
-16 to 64 would be $(64-16)/2 = 24$ tokens. The measured value is higher than this estimate, which
-shows that the remainder distribution of this trace is not uniform and that the uniform assumption
-is optimistic here. We therefore do not use this assumption to back out the “true value” for other
-datasets. If an estimate is still to be given, it should be stated as an extrapolation under the
-uniform-remainder model, and reported together with the number of hit requests and a sensitivity
-range.
+We ran one such check on ACDC offline trace a:
+taking the measurement at block size 16 as the reference, after coarsening to 64
+each hit undercounts by 31.1 tokens on average
+($(8{,}511{,}920-6{,}911{,}936)/51{,}428$, the denominator being the number
+of requests with a hit on this trace).
+Under the uniform-remainder assumption, the expected additional loss from
+coarsening 16 to 64 would be $(64-16)/2 = 24$ tokens.
+The measured value is higher than this estimate, which shows that the remainder
+distribution of this trace is not uniform and that the uniform assumption is
+optimistic here. We therefore do not use this assumption to back out the
+“true value” for other datasets.
+If an estimate is still to be given, it should be stated as an extrapolation
+under the uniform-remainder model, and reported together with the number of hit
+requests and a sensitivity range.
 
-**Bias 2: overcounting when counting by matched block count times block size.** If a measurement
-script multiplies the number of matched blocks directly by $B_t$ rather than truncating at the
-request’s actual input length, a trailing partial block is counted as a whole block. This is not an
-inherent property of the block-level representation: as long as the input-length field is available,
-this bias can be eliminated entirely. On ACDC offline trace a, the uncapped and input-length-capped
-conventions differ by 10,600 tokens, which against the true total input of 18,131,603 is 0.059
-percentage points. This magnitude is determined jointly by the dataset and the block size and should
-not be treated as a universally negligible constant: it depends on how many requests have a shared
-prefix that ends exactly at their input boundary. The counts in our
-Table [6](#tab-blockcliff) are already charged by the number of base blocks actually
-represented and do not include this term.
+**Bias 2: overcounting when counting by matched block count times block
+size.** 
+If a measurement script multiplies the number of matched blocks directly by
+$B_t$ rather than truncating at the request’s actual input length, a trailing
+partial block is counted as a whole block.
+This is not an inherent property of the block-level representation: as long as
+the input-length field is available, this bias can be eliminated entirely.
+On ACDC offline trace a, the uncapped and input-length-capped conventions differ
+by 10,600 tokens, which against the true total input of 18,131,603 is
+0.059 percentage points.
+This magnitude is determined jointly by the dataset and the block size and
+should not be treated as a universally negligible constant: it depends on how
+many requests have a shared prefix that ends exactly at their input boundary.
+The counts in our Table [6](#tab-blockcliff) are already charged by the number
+of base blocks actually represented and do not include this term.
 
 **Bias 3: the engine block size limits the achievable hit.** This term is not a measurement bias of
 the trace but a capability constraint of the engine, yet it determines whether the reuse rate
@@ -842,19 +872,22 @@ datasets, one must report both the trace block size and the engine block size an
 relative relation; reporting only one of the two makes the direction of the bias impossible to
 determine.
 
-### Block-Size Values in Public Configurations
+### Block-Size values in public configurations
 
-Among the public configurations we collected, the block-size values obtained from instrumenting
-production traffic are 16 and 64: 16 appears in vLLM’s default and in the anonymization pipeline of
-one production-platform trace, and 64 appears in AgentX’s collection agent, AIPerf’s default, and
-the baseline configuration of SGLang’s hierarchical cache. When OpenAI reports the number of cached
-tokens, it rounds down to a multiple of 128, reflecting an observable granularity of 128. 512
-appears in the Mooncake public trace and the default configuration of one synthetic generator.
+Among the public configurations we collected, the block-size values obtained
+from instrumenting production traffic are 16 and 64:
+16 appears in vLLM’s default and in the anonymization pipeline of one
+production-platform trace, and 64 appears in AgentX’s collection agent, AIPerf’s
+default, and the baseline configuration of SGLang’s hierarchical cache.
+When OpenAI reports the number of cached tokens, it rounds down to a multiple of
+128, reflecting an observable granularity of 128.
+512 appears in the Mooncake public trace and the default configuration of one
+synthetic generator.
 
 What can be stated from this is: 512 appears rarely among the public configurations we collected and
 cannot yet be regarded as a general production configuration. Coarsening to 512 underestimates the
 reuse rate of short-append workloads, which are relatively common in agentic settings: the per-turn
-append length measured by TraceLab[[18]](#ref-zhu2026tracelab) has a median of 875 tokens,
+append length measured by TraceLab[[17]](#ref-zhu2026tracelab) has a median of 875 tokens,
 equivalent to 1.7 blocks of 512 or 13.7 blocks of 64.
 
 Here we need to distinguish an easily confused quantity: the minimum cacheable prefix length
@@ -869,7 +902,7 @@ fall on a boundary inside a physical block. A trace with a block length of 512 c
 first divergence position inside a 512-token block, and therefore cannot be used to evaluate the
 gain from a matching unit smaller than 512 tokens.
 
-### The Default Block Size and Its Evaluation Workloads
+### The default block size and its evaluation workloads
 
 Section 7.2 of the vLLM paper writes[[2]](#ref-kwon2023vllm):
 
@@ -890,7 +923,7 @@ GPU utilization and internal fragmentation, not a single dataset; we do not read
 of Alpaca. Third, that trade-off was calibrated on 2023 workloads, whereas the workloads used in
 later work are far longer than these two datasets: Mooncake[[3]](#ref-qin2025mooncake) has an
 average input of 7,955 to 19,019 tokens, and the paper-abstract dataset used by
-Sarathi[[34]](#ref-agrawal2023sarathi) has an input P90 of 12,985 tokens.
+Sarathi[[33]](#ref-agrawal2023sarathi) has an input P90 of 12,985 tokens.
 
 Two quantities also need to be kept apart here. That experiment measured the physical PagedAttention
 block size and its end-to-end performance, which is not the same quantity as the prefix-matching
@@ -902,7 +935,7 @@ wrongly at the time.
 Among the 29 papers we audited, we did not find any work that re-reports a sensitivity analysis over
 this parameter.
 
-### Mechanisms that Depend on Token Values, Not Only on the Reuse Relation
+### Mechanisms that depend on token values, not only on the reuse relation
 
 <span id="sec-tokenvalue"></span>
 
@@ -914,12 +947,12 @@ values themselves, and therefore cannot be derived from the reuse relation.
 **Routing in mixture-of-experts.** Each token is assigned by the router to a number of experts, so
 the load on each expert depends on the token values. Several system works exist around this:
 improving scale efficiency through disaggregated expert
-parallelism[[61]](#ref-zhu2025megascaleinfer), partitioning across nodes by expert activation
-pattern[[64]](#ref-bambhaniya2026moeactivation), and predicting expert activation to move
-weights in advance[[62]](#ref-yu2025moepatterns). The benefit of all of these depends on
+parallelism[[60]](#ref-zhu2025megascaleinfer), partitioning across nodes by expert activation
+pattern[[63]](#ref-bambhaniya2026moeactivation), and predicting expert activation to move
+weights in advance[[61]](#ref-yu2025moepatterns). The benefit of all of these depends on
 whether routing concentrates on a few experts.
 
-The predictability of routing is itself disputed. One analysis[[63]](#ref-wang2026moemyth)
+The predictability of routing is itself disputed. One analysis[[62]](#ref-wang2026moemyth)
 argues that the division of labor among experts reflects the geometry of the representation space
 and does not necessarily correspond to interpretable domain partitions. If this conclusion holds,
 then a workload synthesized from domain labels is not sufficient to reproduce the real expert-load
@@ -948,7 +981,7 @@ the time at which a request is issued often depends on when another request fini
 dependency determines whether the workload should be replayed in an open-loop or a closed-loop
 manner.
 
-### A Unified Expression for Arrival Time
+### A unified expression for arrival time
 
 Let the arrival time of request $R$ be
 $$
@@ -976,7 +1009,7 @@ extracted, the check residual was zero for 7 pairs of adjacent requests. The tim
 dataset is itself in closed-loop form, and its arrival times cannot be given independently of the
 system response time.
 
-### When Closed-Loop Is Required
+### When closed-loop is required
 
 The choice between open-loop and closed-loop is not a matter of style. The criterion is the fraction
 of one round’s period taken by the system time: if this fraction is small, a faster system has
@@ -1006,7 +1039,7 @@ show that this fraction differs by about an order of magnitude between the two c
 the threshold itself needs to be determined by measurement on a specific system, and we did not
 perform this measurement.
 
-### Comparability of the Two Setups
+### Comparability of the two setups
 
 Open-loop and closed-loop behave differently in three respects, and these differences affect
 experimental design.
@@ -1027,7 +1060,7 @@ Third, the agentic workload is closed-loop by construction. The way the AgentX b
 the number of active sessions as the concurrency and sets no request rate, so this dataset cannot be
 used to find the capacity knee.
 
-### Session Structure in Public Data
+### Session structure in public data
 
 The extent to which session structure is recorded in public data varies widely, see
 Table [8](#tab-session).
@@ -1061,15 +1094,13 @@ strict chain: we observed 4 deviations in the sample we extracted, where a posit
 corresponds to the main agent waiting for a sub-chain to complete, and a negative deviation
 corresponds to the main agent’s own concurrent calls.
 
-### Session Setups in the Literature
+### Session setups in the literature
 
-By the coding results in Section [10](#sec-audit), 1 of the 13 papers in the 2020–2025
-sample models cross-turn state, and that instance is a synthetic multi-turn conversation; 6 of the 8
-papers in the 2026 sample model sessions, 5 in real-system work and 1 in a simulator
-(Frontier[[79]](#ref-feng2026frontier), whose stateful-request abstraction includes think
-rounds and tool-call latency). In the supplementary sample, 1 of 8 models multi-turn sessions
-(TokenSim[[80]](#ref-wu2025tokensim)). A closed-loop setup with a concurrency count appears in
-0 papers in the core sample and 2 papers in the 2026 sample.
+By the coding results in Section [10](#sec-audit), 1 of the 13 papers in the
+2020–2025 sample models cross-turn state, and that instance is a synthetic
+multi-turn conversation; 5 of the 8 papers in the 2026 sample model sessions.
+A closed-loop setup with a concurrency count appears in 0 papers in the core
+sample and 2 papers in the 2026 sample.
 
 The absence of this setup is notable, because what Schroeder et
 al.[[5]](#ref-schroeder2006open) discuss is precisely the model of a fixed number of clients,
@@ -1078,38 +1109,38 @@ OpenAlex, this paper has been cited by 4 works since 2022, none of which is on l
 inference serving. We do not claim from this that the result has been overlooked, only that within
 our search scope we did not find it applied to this setting.
 
-CacheWise[[19]](#ref-tiwari2026cachewise) is the fullest treatment in our sample. It runs a
+CacheWise[[18]](#ref-tiwari2026cachewise) is the fullest treatment in our sample. It runs a
 fixed number of coding-agent sessions concurrently until all finish, and reports results grouped by
 concurrency; its treatment of think time takes the human idle period as the session boundary, and it
 separately evaluates sessions that resume after idling—such sessions need markedly more KV cache to
 be re-prefilled.
 
-### Characterization of Agentic Workloads and Related System Work
+### Characterization of agentic workloads and related system work
 
 Session and dependency appear in concentration in 2026 because agentic applications turn
 inter-request dependency from an occasional case into the norm. The related work we found can be
 divided into three classes.
 
 **Characterization.** One group of works reports the shape of agentic workloads in production: an
-analysis of multi-turn sessions on a production platform[[17]](#ref-wang2026smetric), the
-caching behavior of coding agents[[19]](#ref-tiwari2026cachewise), the overall characteristics
-of agentic workloads[[66]](#ref-yuan2026agentic), and a large-scale trace characterization of a
-code-completion service[[67]](#ref-liu2026copilot). The last reports a scale of 3.2 million
+analysis of multi-turn sessions on a production platform[[16]](#ref-wang2026smetric), the
+caching behavior of coding agents[[18]](#ref-tiwari2026cachewise), the overall characteristics
+of agentic workloads[[65]](#ref-yuan2026agentic), and a large-scale trace characterization of a
+code-completion service[[66]](#ref-liu2026copilot). The last reports a scale of 3.2 million
 users and 761 million calls but does not release the trace. Another work models the traffic of
-multi-agent systems from the angle of coordination topology[[71]](#ref-lamagna2026multiagent),
+multi-agent systems from the angle of coordination topology[[70]](#ref-lamagna2026multiagent),
 concluding that inter-arrival times should be conditioned on the topology rather than characterized
 by a single distribution.
 
 **System work that exploits dependency structure.** One line of work uses the predictability of the
-workflow as a basis for scheduling[[65]](#ref-yu2026pythia), prefetching or reserving resources
+workflow as a basis for scheduling[[64]](#ref-yu2026pythia), prefetching or reserving resources
 before a request arrives based on the known process structure; another attends to the pressure that
-agentic workloads place on storage bandwidth[[70]](#ref-wu2026dualpath), driven by the repeated
+agentic workloads place on storage bandwidth[[69]](#ref-wu2026dualpath), driven by the repeated
 swapping in and out of session state. Both lines require the workload to have a real dependency
 structure and cannot be evaluated with an independent request stream.
 
 **Evaluation tools and simulation.** A benchmark for agentic
-workloads[[69]](#ref-wang2026xperf) and a multi-turn session
-simulator[[68]](#ref-rajib2026agentservesim) appeared in the same period. The latter makes a
+workloads[[68]](#ref-wang2026xperf) and a multi-turn session
+simulator[[67]](#ref-rajib2026agentservesim) appeared in the same period. The latter makes a
 controlled comparison within a single simulation environment, and its subsection title states
 directly the dependence of the policy ranking on the reuse rate, a result we cite in
 Section [10](#sec-audit).
@@ -1127,7 +1158,7 @@ The first four aspects describe a single stream of traffic. A real deployment ca
 classes of traffic with different characteristics at the same time, and merging them into one
 average distribution changes several statistics at once.
 
-### Magnitude of Differences Across Classes
+### Magnitude of differences across classes
 
 BurstGPT is divided into four classes by model and call type, and the statistics of each class are
 given in Table [9](#tab-strat).
@@ -1157,7 +1188,7 @@ per-class SLO loses its object: a target can only be attached to a specific clas
 experiments are hard to attribute: the aggregated metric is dominated by the class with the largest
 share.
 
-### Class Fields in Public Data
+### Class fields in public data
 
 The class dimensions provided by the datasets differ widely: BurstGPT provides two dimensions, model
 and call type; ServeGen is organized by client, its sample contains 422 clients, divided into
@@ -1165,7 +1196,7 @@ several groups by model scale and type; FineServe provides three dimensions: arc
 mixture-of-experts), scale (four levels), and task intent (ten classes); Azure and Mooncake have no
 class field and can only be distinguished by file name.
 
-### Model Routing
+### Model routing
 
 In agentic workloads, calling multiple models within a single session is a common form. About 53% of
 the sessions in AgentX involve multiple models, the typical form being a main agent using a larger
@@ -1176,24 +1207,24 @@ Two kinds of information need to be distinguished: which model a request is sent
 choice and is a property of the request; the model’s vocabulary size, number of experts, and the
 like are properties of the model and not of the workload. Our fifth aspect includes only the former.
 
-### System Work for Mixed Traffic
+### System work for mixed traffic
 
 Handling traffic of different characteristics separately is itself a line of system design.
 
-Separation by downstream task is an earlier kind. One work[[42]](#ref-hu2024interference)
+Separation by downstream task is an earlier kind. One work[[41]](#ref-hu2024interference)
 points out that when summarization and conversation requests are mixed on the same instance, the two
 interfere with each other, and it therefore argues for separate deployment by downstream
 workload—the premise of this argument is precisely that the traffic has distinguishable classes. A
-similar approach appears in the multimodal setting[[74]](#ref-papaioannou2026tcmserve),
+similar approach appears in the multimodal setting[[73]](#ref-papaioannou2026tcmserve),
 scheduling by modality to address the differences in compute across modalities.
 
 Multiplexing at the adapter level is another kind. Work targeting multi-adapter
-environments[[75]](#ref-iliakopoulou2024chameleon) caches and schedules adaptively by the usage
+environments[[74]](#ref-iliakopoulou2024chameleon) caches and schedules adaptively by the usage
 frequency of adapters. This line of work is adjacent to but not the same as our fifth aspect:
 adapters share the same base model, whereas model routing points to different base models, and the
 two differ in order of magnitude in GPU-memory footprint and switching cost.
 
-On the measurement side, FineServe[[73]](#ref-zhang2026fineserve) stratifies along three
+On the measurement side, FineServe[[72]](#ref-zhang2026fineserve) stratifies along three
 dimensions—architecture, scale, and task intent—and is the public work with the finest
 stratification we have seen. It reports that its platform shows no clear daily cycle, contrary to
 the shape reported by Azure and BurstGPT, and its explanation is that the platform’s users are
@@ -1201,7 +1232,7 @@ distributed across many time zones worldwide. This contrast shows that a daily c
 inherent property of inference-serving workloads but depends on the geographic distribution of those
 served.
 
-### Tool Support
+### Tool support
 
 Among the 24 tools we checked, the dataset parameter and the model parameter of mainstream
 load-testing tools are both single-valued, so a single run can apply only one class of traffic and
@@ -1227,7 +1258,7 @@ organizes by artifact, going through the load-generation and load-testing tools 
 use directly. The public datasets have already been given in Table [3](#tab-datasets) of
 Section [3.3](#sec-datasets).
 
-### Support for the Arrival Process
+### Support for the arrival process
 
 Table [10](#tab-tools) summarizes the arrival-process capabilities of the tools we checked.
 We checked by reading the source code and documentation of each tool’s current main branch, rather
@@ -1246,20 +1277,21 @@ than relying on its release notes.
 | inference-perf | ✓ | ✓ | – | – | ✓ |
 | AIBrix[[4]](#ref-aibrix2025) | ✓ | ✓ | – | – | ✓ |
 | Dynamo | ✓ | – | – | – | ✓ |
-| ServeGen[[21]](#ref-xiang2026servegen) | – | – | ✓ | ✓ | ✓ |
-| BurstGPT[[22]](#ref-wang2025burstgpt) | – | – | ✓ | – | ✓ |
+| ServeGen[[20]](#ref-xiang2026servegen) | – | – | ✓ | ✓ | ✓ |
+| BurstGPT[[21]](#ref-wang2025burstgpt) | – | – | ✓ | – | ✓ |
 
-The table shows that configurability of the interval distribution is already fairly common: 8 of the
-9 tools provide either Poisson or Gamma, and 4 of them provide Gamma. Weibull is provided only by
-ServeGen. We note that SGLang is the only tool among them that provides no constant-interval option
-and whose trace replay supports only a single format.
+The table shows that configurability of the interval distribution is already
+fairly common: 8 of the 9 tools provide either Poisson or Gamma, and 4 of them
+provide Gamma. Weibull is provided only by ServeGen.
+We note that SGLang is the only tool among them that provides no
+constant-interval option and whose trace replay supports only a single format.
 
 Three tools additionally provide capabilities beyond our five aspects: Dynamo provides a sinusoidal
 rate function that can construct a periodic workload; inference-perf provides dependency-graph-based
 session replay and telemetry-span replay; and ServeGen provides arrival generation driven by a rate
 function, decoupled from the content distribution.
 
-### Whether the Arrival Process Is Decoupled from the Dataset
+### Whether the arrival process is decoupled from the dataset
 
 A commonly voiced impression is that load-testing tools bind the arrival process to the dataset, so
 that choosing a dataset also determines the arrival pattern. What we found on checking is that this
@@ -1269,7 +1301,7 @@ the arrival process, and the target model as three independent parameters. SGLan
 in its Mooncake trace-replay path, the arrival times and the content are taken from the same file
 and cannot be replaced separately.
 
-### How Blocking Appears in the Tools
+### How blocking appears in the tools
 
 Section [6](#sec-content) noted that block size affects the measurement of the reuse rate.
 At the tool level, all 6 tools we checked explain the role of block size in their documentation or
@@ -1285,7 +1317,7 @@ The statement that “no one reports the effect of block size” therefore does 
 we can support is narrower: all 6 of these tools report numbers at some fixed block size, but none
 of them sweeps block size as an independent variable.
 
-### Format Fragmentation
+### Format fragmentation
 
 The above artifacts use at least 8 mutually incompatible request-stream formats, including
 Mooncake’s line-oriented JSON, vLLM’s timed-trace format, the SGLang simulator format, Azure’s
@@ -1303,20 +1335,21 @@ lengths, how to align block sizes) are usually not reported in the paper.
 
 This section reports the results of coding the experimental setups of 29 inference-serving papers.
 
-### Sample and Coding
+### Sample and coding
 
-The sample has three parts: a core sample of 13 papers from 2020–2025, a 2026 sample of 8 papers,
-and a supplementary sample of 8 papers. The supplementary sample comprises 4 simulators and 4
-scheduling papers, selected because the core sample cites them as a baseline or point of comparison.
-The core sample was selected under the condition that a paper’s conclusions depend explicitly on
-some workload property; it covers the most-cited serving-system work of the period, but it is not a
-random sample of that period.
+The sample has three parts: a core sample of 13 papers from 2020–2025, a
+2026 sample of 8 papers, and a supplementary sample of 8 papers. The
+supplementary sample comprises 4 simulators and 4 scheduling papers, selected
+because the core sample cites them as a baseline or point of comparison. The
+core sample was selected under the condition that a paper’s conclusions depend
+explicitly on some workload property; it covers the most-cited serving-system
+work of the period, but it is not a random sample of that period.
 
 For each paper, we extracted eight fields from its experimental-setup section: dataset source,
 arrival process, open- or closed-loop, experiment scale, how output length is handled, prefix
 caching and block size, whether sessions are modeled, and whether the paper states any limitation
 regarding workload realism. The extraction follows common practice in systematic literature
-reviews [[32]](#ref-kitchenham2007guidelines): the fields were listed before coding began and
+reviews [[31]](#ref-kitchenham2007guidelines): the fields were listed before coding began and
 were neither added to nor removed during coding, so that papers remain comparable. We note that the
 field list itself was settled after the search and an initial reading, not before the search; see
 Section [13](#sec-threats). A field not mentioned in a paper is coded as “not stated,”
@@ -1325,7 +1358,7 @@ which is itself an observation; several of the proportions below concern exactly
 Table [11](#tab-audit) reports the three parts separately and does not pool the counts: the
 three parts were selected differently, and a pooled proportion would correspond to no population.
 
-### Coding Results
+### Coding results
 
 <span id="tab-audit"></span>
 
@@ -1357,7 +1390,7 @@ Three results warrant separate comment.
 
 **Block-size sensitivity analysis: 1 of 29.** This is the vLLM experiment cited in
 Section [6](#sec-content). Two other papers come close but do not do it:
-TokenSim [[80]](#ref-wu2025tokensim) lists block-granularity simulation as its source of
+TokenSim [[79]](#ref-wu2025tokensim) lists block-granularity simulation as its source of
 accuracy, but its sensitivity analyses cover request rate, request count, input/output lengths, and
 hardware parameters, never block size; Splitwise [[1]](#ref-patel2024splitwise) moves KV by
 block and exploits block contiguity, and likewise does not sweep the parameter. We note that block
@@ -1370,7 +1403,7 @@ fixes or truncates output length; of these, 1 states the mechanism fully and 1 s
 The one that states it fully is Sequence Scheduling, whose research question directly involves
 truncating by predicted length and which therefore must state it.
 
-$S^3$ [[57]](#ref-jin2023s3) needs to be separated into two parts: its topic is output-length
+$S^3$ [[56]](#ref-jin2023s3) needs to be separated into two parts: its topic is output-length
 prediction, and it defines an oracle—one that requires ground-truth lengths—as a control group.
 Where those ground-truth lengths come from is stated in its method section: the predictor is
 fine-tuned on a question-answering dataset using the questions as inputs and the lengths of the
@@ -1384,14 +1417,14 @@ clients, each of which waits for a think time after receiving a response before 
 request, matching the behavior of real chat interfaces, editor plugins, and agent frameworks. It
 appears in 2 papers in the 2026 sample.
 
-### Two Evaluation Practices in the 2026 Sample
+### Two evaluation practices in the 2026 sample
 
 In the 2026 sample of 8 papers, we observe two coexisting evaluation practices. Work on real systems
 (6 papers) uses trace replay, explicit session structure, and forced output length; simulation and
 analytical work (2 papers) uses fixed input/output length points and the ShareGPT dataset.
 
 Among the 4 simulators in the supplementary sample
-(LLMServingSim [[81]](#ref-cho2024llmservingsim), TokenSim [[80]](#ref-wu2025tokensim),
+(LLMServingSim [[80]](#ref-cho2024llmservingsim), TokenSim [[79]](#ref-wu2025tokensim),
 APEX+, SplitwiseSim), none replays production arrival times directly, but what they use instead
 differs. LLMServingSim, APEX+, and SplitwiseSim use a synthetic Poisson process; of these,
 SplitwiseSim uses the length distribution of an Azure production trace while generating arrival
@@ -1412,7 +1445,7 @@ to support a claim about the population distribution; the difference in evaluati
 the two groups may also stem from factors such as paper type, workload source, or publication date,
 and we cannot separate these explanations.
 
-### Divergent Setups Make Conclusions Incomparable
+### Divergent setups make conclusions incomparable
 
 During coding we found several pairs of conclusions in tension, with the difference tied to the
 evaluation setup. The three pairs below share a common form: two works reach conclusions in
@@ -1421,14 +1454,14 @@ directly. We stress that these comparisons do not control for differences in imp
 configuration, and cannot be used to quantify the effect of any single factor.
 
 **First, saturated-batch and isolated single-program metrics cannot be compared directly with
-open-loop response latency.** For throughput, SGLang [[46]](#ref-zheng2024sglang) runs “a
+open-loop response latency.** For throughput, SGLang [[45]](#ref-zheng2024sglang) runs “a
 sufficiently large batch of program instances to compute the maximum throughput”; for latency, it
 “execute\[s\] a single program at a time without batching.” We note that the paper never uses the
 open-/closed-loop pair of terms, and never describes a fixed concurrency count, a think time, or an
 exogenous arrival process; classifying it as closed-loop is therefore not accurate. A better
 description is that it reports throughput under saturation and single-program latency under no
 contention, neither of which is response latency measured under a given arrival process.
-Preble [[50]](#ref-srivatsa2025preble) evaluates a similar mechanism under an open-loop setup
+Preble [[49]](#ref-srivatsa2025preble) evaluates a similar mechanism under an open-loop setup
 and reports a 1.5$\times$ to 14.5$\times$ improvement in mean latency and a 2$\times$ to
 10$\times$ improvement at P99 relative to its own SGLang baseline. We stress that these factors
 come from a comparison under the same open-loop workload within Preble’s own experiments, not from a
@@ -1438,16 +1471,19 @@ evaluation conventions are not directly comparable; they cannot be used to quant
 open- versus closed-loop setups. To give that effect, one would need a controlled comparison of
 open- and closed-loop on the same implementation, and we did not find such an experiment.
 
-**Second, the “reuse rates” reported by two works are not the same quantity and cannot be compared
-directly.** Frontier [[79]](#ref-feng2026frontier) performs its fidelity validation on four
-workloads: three fixed input/output length points (2048/256, 256/2048, 1024/1024) and one SharedGPT
-trace. One impression needs correcting here: that work *does* model prefix caching. It models the
-prefix cache as a block-hash index that marks matched prefix blocks as already computed, and reports
-cumulative hit ratios that match vLLM’s — 36.98% under co-location and 37.11% under disaggregation.
-It also models stateful requests carrying thinking rounds, tool-call delays, and per-round token
-plans.
+**Second, two works from the same year use workloads with very different
+reuse characteristics.** 
+Frontier [[78]](#ref-feng2026frontier) performs its fidelity validation on four
+workloads: three fixed input/output length points (2048/256, 256/2048,
+1024/1024) and one ShareGPT trace.
+One impression needs correcting here: that work *does* model prefix
+caching. It models the prefix cache as a block-hash index that marks matched
+prefix blocks as already computed, and reports cumulative hit ratios that match
+vLLM’s — 36.98% under co-location and 37.11% under disaggregation. It also
+models stateful requests carrying thinking rounds, tool-call delays, and
+per-round token plans.
 
-In the same year, SMetric [[17]](#ref-wang2026smetric) measures KV reuse exceeding 80% of
+In the same year, SMetric [[16]](#ref-wang2026smetric) measures KV reuse exceeding 80% of
 request tokens on a production trace, of which more than 65% comes from later requests in the same
 session.
 
@@ -1462,9 +1498,10 @@ state whether it is the fraction of potentially shareable tokens, the prefix reu
 trace at a given block size, or the hit rate actually measured under a named engine and
 configuration. In the literature we examined, all three are commonly denoted by the same word.
 
-For Frontier itself, what we can support is a narrower observation: its Section 5 experimental setup
-does not state an arrival process, and a request rate appears only once, in an appendix (a SharedGPT
-trace replayed at 64 requests per second). For a simulator whose stated goal is temporal fidelity,
+For Frontier itself, what we can support is a narrower observation: its
+Section 5 experimental setup does not state an arrival process, and a request
+rate appears only once, in an appendix (a ShareGPT trace replayed at 64
+requests per second). For a simulator whose stated goal is temporal fidelity,
 the absence of an arrival process in the main experiments is worth noting.
 
 **Third, one simulation work directly reports that the ranking of policies depends on the reuse
@@ -1479,13 +1516,14 @@ more direct than a cross-paper comparison.
 
 This section draws together three observations that cut across the aspects.
 
-### The Trade-off Between Privacy and Reproducibility Has Hardened into a Representation
+### The trade-off between privacy and reproducibility has hardened into a representation
 
 Table [3](#tab-datasets) in Section [9](#sec-tools) shows that every production
-server-side trace removes the original token sequence in some way, and the more recent ones use a
-block index or block hash as a substitute. This addresses two problems at once: privacy, since the
-hash is irreversible; and storage, since the 145 million tokens of the Mooncake conversation trace
-would take about 580 MB stored as text but 2.89 MB stored as block indices.
+server-side trace removes the original token sequence in some way, and the more
+recent ones use a block index or block hash as a substitute. This addresses two
+problems at once: privacy, since the hash is irreversible; and storage, since
+the 145 million tokens of the Mooncake conversation trace would take about
+580 MB stored as text but 2.89 MB stored as block indices.
 
 Block-coding is therefore not a one-off choice by a single dataset but the common representation for
 public data in this area. Its cost is to replace a continuous quantity—the number of shared
@@ -1498,7 +1536,7 @@ it cannot be handled by adding a single uniform correction term.
 Only one tool notes, in a code comment, that different traces use different block sizes; the others
 each assume a single fixed value.
 
-### Configurability Is Widespread; the Basis for Parameter Values Is Still Missing
+### Configurability is widespread; the basis for parameter values is still missing
 
 Placing Table [10](#tab-tools) alongside the coding results in
 Section [10](#sec-audit) shows a contrast. At the tool level, interval distributions, rate
@@ -1513,7 +1551,7 @@ parameters are already adjustable, but the reason for setting one to a particula
 sensitive the conclusions are to that value, are usually outside the scope of a paper’s discussion.
 The checklist in Section [12](#sec-checklist) targets exactly this level.
 
-### A Lag Between Workload Characterization and System Design
+### A lag between workload characterization and system design
 
 The sensitivity table in Section [3](#sec-framework) lists the mechanisms that each aspect
 affects. Comparing that table with the fields of public data shows a systematic lag: new system
@@ -1539,9 +1577,10 @@ This section organizes the preceding observations into actionable checklist item
 
 **On data.**
 
-1.  Compute the ratio of distinct timestamps to records, and check whether the values fall on a
-    regular grid. If there are signs of aggregation, do not report queuing or time-to-first-token
-    conclusions finer than that granularity.
+1.  Compute the ratio of distinct timestamps to records, and check whether the
+    values fall on a regular grid. If there are signs of aggregation, do not
+    report queueing or time-to-first-token conclusions finer than that
+    granularity.
 
 2.  The coefficient of variation should be reported only after the previous check, stating whether
     it reflects the raw or the aggregated shape.
@@ -1569,8 +1608,8 @@ This section organizes the preceding observations into actionable checklist item
 
 7.  Sweep block size as a parameter rather than fixing it as a constant.
 
-8.  When reporting a distribution, give quantiles. Workload data are often heavy-tailed, and the
-    mean does not summarize them adequately.
+8.  When reporting a distribution, give quantiles. Workload data is often
+    heavy-tailed, and the mean does not summarize it adequately.
 
 9.  State how output length is determined: genuine generation to the end-of-sequence token, replay
     of the recorded length, or forced truncation.
@@ -1603,16 +1642,20 @@ collection. We used them to re-check the entries already included, but we did no
 independent round of screening under the protocol. This limits the reproducibility of the search
 process, and readers should take it into account when interpreting the proportions below.
 
-**Coding errors and corrections.** Before finalizing this draft we re-checked a number of coded
-entries against the primary sources, and corrected five of them. These corrections share a cause:
-they were coded from a paper’s abstract, figures, or a secondary description rather than from a
-line-by-line reading of the relevant section. The corrections are: in TokenSim the single occurrence
-of “Poisson” describes conversation length rather than request arrivals, and that paper does model
-multi-round conversations (both were coded wrongly); the source of the ground-truth lengths in
-$S^3$ is stated in its method section, which we had coded as “not stated”; SGLang’s evaluation
-should not be classed as closed-loop, since the paper does not use that pair of terms; and Frontier
-does model block-hash prefix caching and reports hit ratios, which we had coded as not modelled. The
-counts in Table [11](#tab-audit) have been updated accordingly.
+**Coding errors and corrections.** 
+Before finalizing this draft we re-checked a number of coded entries against
+the primary sources, and corrected five of them. These corrections share a
+cause: they were coded from a paper’s abstract, figures, or a secondary
+description rather than from a line-by-line reading of the relevant section.
+The corrections are: in TokenSim the single occurrence of “Poisson” describes
+conversation length rather than request arrivals, and that paper does model
+multi-round conversations (both were coded wrongly); the source of the
+ground-truth lengths in $S^3$ is stated in its method section, which we had
+coded as “not stated”; SGLang’s evaluation should not be classed as
+closed-loop, since the paper does not use that pair of terms; and Frontier does
+model block-hash prefix caching and reports hit ratios, which we had coded as
+not modeled. The counts in Table [11](#tab-audit) have been updated
+accordingly.
 
 We keep this note rather than silently amending the numbers, for two reasons. First, the
 distribution of these errors is itself relevant to our topic: they cluster on negative judgments of
@@ -1629,7 +1672,7 @@ WeChat-account indices, and cross-refutation against Crossref and OpenAlex, and 
 exhaustive search.
 
 **Availability of primary sources.** We could not obtain the experimental-setup section of
-Orca [[33]](#ref-yu2022orca): its full text is a USENIX-provided PDF that uses compressed
+Orca [[32]](#ref-yu2022orca): its full text is a USENIX-provided PDF that uses compressed
 object streams, from which our tools could not extract text. Every statement we make about that
 work’s workload setup is marked as not verifiable from the primary source, and we do not speculate.
 
@@ -1695,23 +1738,23 @@ not a universal threshold.
 <span id="sec-related"></span>
 
 **Surveys of inference serving.** Existing
-surveys [[8]](#ref-miao2024towards), [[9]](#ref-zhen2025taming), [[10]](#ref-park2025engines), [[11]](#ref-li2024hpec), [[12]](#ref-pan2025survey), [[78]](#ref-zhou2024efficient)
+surveys [[8]](#ref-miao2024towards), [[9]](#ref-zhen2025taming), [[10]](#ref-park2025engines), [[11]](#ref-li2024hpec), [[12]](#ref-pan2025survey), [[77]](#ref-zhou2024efficient)
 are organized around serving mechanisms; their coverage is shown in
 Table [1](#tab-surveycmp).
 
-**The effect of workload choice.** Papaioannou and Doudali [[14]](#ref-papaioannou2024workload)
+**The effect of workload choice.** Papaioannou and Doudali [[13]](#ref-papaioannou2024workload)
 point out that most systems use synthetic datasets in evaluation, and report about a threefold
 throughput difference between text-generation and summarization workloads. Within our search scope
 it is the earliest work to discuss this problem explicitly; it is an eight-page workshop paper,
 concerns a single system, and does not address trace analysis or a classification framework.
 
-**Discussion of evaluation methodology.** Agrawal et al. [[15]](#ref-agrawal2025evaluating)
+**Discussion of evaluation methodology.** Agrawal et al. [[14]](#ref-agrawal2025evaluating)
 organize common problems in inference-serving evaluation under three headings—baseline fairness,
 evaluation setup, and metric design—including workload choices that fail to represent production
 settings. That work is aimed at practitioners, whereas we focus on a description framework for the
 workload itself; the two have different concerns.
 
-**Production-trace characterization.** Wang et al. [[16]](#ref-wang2025kvcachewild) report the
+**Production-trace characterization.** Wang et al. [[15]](#ref-wang2025kvcachewild) report the
 KV reuse characteristics of a large cloud provider, measuring ideal hit rates of 62% and 54% under
 an infinite-capacity assumption. The aim of that work is to guide cache-eviction policy design, so
 it does not describe the matching algorithm, does not distinguish prefix-reusable content from
@@ -1719,32 +1762,33 @@ repetition at arbitrary positions, and does not vary the measurement granularity
 flaws of that work, but they limit the comparability of its numbers with other work.
 
 Characterization work on agent workloads appeared in a cluster in 2026, including real coding-agent
-traces [[18]](#ref-zhu2026tracelab), multi-turn session analysis on a production
-platform [[17]](#ref-wang2026smetric), and session-level cache-management
-studies [[19]](#ref-tiwari2026cachewise).
+traces [[17]](#ref-zhu2026tracelab), multi-turn session analysis on a production
+platform [[16]](#ref-wang2026smetric), and session-level cache-management
+studies [[18]](#ref-tiwari2026cachewise).
 
-**Load generation.** ServeGen [[21]](#ref-xiang2026servegen) models a production platform by
+**Load generation.** ServeGen [[20]](#ref-xiang2026servegen) models a production platform by
 decomposing it into clients and is the most heavily parameterized of the general-purpose load
-generators we examined; BurstGPT [[22]](#ref-wang2025burstgpt) characterizes burstiness with a
+generators we examined; BurstGPT [[21]](#ref-wang2025burstgpt) characterizes burstiness with a
 Gamma process and releases a long-term trace.
 
 **Earlier methods of workload characterization.** Our method draws on earlier measurement literature
-in networking and cloud computing: Arlitt and Williamson’s [[25]](#ref-arlitt1997web)
+in networking and cloud computing: Arlitt and Williamson’s [[24]](#ref-arlitt1997web)
 extraction of invariants across traces, Crovella and
-Bestavros’s [[26]](#ref-crovella1997selfsimilar) practice of tracing a statistical phenomenon
-back to its generating mechanism, Barford and Crovella’s [[27]](#ref-barford1998surge) argument
+Bestavros’s [[25]](#ref-crovella1997selfsimilar) practice of tracing a statistical phenomenon
+back to its generating mechanism, Barford and Crovella’s [[26]](#ref-barford1998surge) argument
 about the fidelity of synthetic load generators, the practice of Shahrad et
-al. [[28]](#ref-shahrad2020serverless) and Joosen et al. [[29]](#ref-joosen2023howdoes) of
+al. [[27]](#ref-shahrad2020serverless) and Joosen et al. [[28]](#ref-joosen2023howdoes) of
 first releasing and characterizing a trace and then revisiting it longitudinally, and Schroeder et
 al.’s [[5]](#ref-schroeder2006open) discussion of open- and closed-loop workload models. For
-reporting practice in evaluation, we draw on Heiser [[30]](#ref-heiser2025crimes) and Hoefler
-and Belli [[31]](#ref-hoefler2015scientific).
+reporting practice in evaluation, we draw on Heiser [[29]](#ref-heiser2025crimes) and Hoefler
+and Belli [[30]](#ref-hoefler2015scientific).
 
 ## Conclusion
 
-We treat the workload as an object of study in its own right, give a five-aspect description
-framework with its conditions of applicability, map how public datasets and tools cover each aspect,
-and code the evaluation setups of 29 papers uniformly.
+We treat the workload as an object of study in its own right, give a
+five-aspect description framework with its conditions of applicability, map how
+public datasets and tools cover each aspect, and code the evaluation setups of
+29 papers uniformly.
 
 Three results bear repeating. First, among the 29 papers we examined, 1 reports a sensitivity
 analysis over KV cache block size, a parameter whose effect on the measured reuse rate reaches an
@@ -1778,7 +1822,6 @@ an experimental condition that must be reported in full.
 1. <span id="ref-park2025engines"></span>Park S, Jeon H, Lee C, et al. A survey on inference engines for large language models. arXiv:2505.01658, 2025.
 1. <span id="ref-li2024hpec"></span>Li B, Jiang Y, Gadepally V, Tiwari D. LLM inference serving: Survey of recent advances and opportunities. In: Proc. IEEE HPEC, 2024.
 1. <span id="ref-pan2025survey"></span>Pan J, Li G. A survey of LLM inference systems. arXiv:2506.21901, 2025.
-1. <span id="ref-multiagent2026"></span>Empirical study of arrival processes in multi-agent LLM traffic. arXiv:2608.20494, 2026.
 1. <span id="ref-papaioannou2024workload"></span>Papaioannou K, Doudali T D. The importance of workload choice in evaluating LLM inference systems. In: Proc. 4th Workshop on Machine Learning and Systems (EuroMLSys), 2024: 39–46.
 1. <span id="ref-agrawal2025evaluating"></span>Agrawal A, Kedia N, Agarwal A, et al. On evaluating performance of LLM inference serving systems. arXiv:2507.09019, 2025.
 1. <span id="ref-wang2025kvcachewild"></span>Wang J, Han J, Wei X, et al. KVCache cache in the wild: Characterizing and optimizing KVCache cache at a large cloud provider. In: Proc. USENIX ATC, 2025.
