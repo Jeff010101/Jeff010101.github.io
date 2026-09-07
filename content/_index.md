@@ -51,6 +51,21 @@ sections:
     design:
       columns: '1'
   - block: collection
+    id: blog
+    content:
+      title: Latest Research Notes
+      text: Long-form writing on AI systems, inference, and visual intelligence.
+      count: 3
+      filters:
+        folders:
+          - blog
+        exclude_future: false
+        exclude_past: false
+    design:
+      view: article-grid
+      fill_image: true
+      columns: 2
+  - block: collection
     id: papers
     content:
       title: Publications & Patents

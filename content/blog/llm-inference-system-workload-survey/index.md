@@ -12,6 +12,11 @@ tags:
 draft: false
 math: true
 toc: true
+image:
+  caption: "LLM inference workloads flowing through a distributed serving system."
+  focal_point: Center
+  placement: 1
+  alt_text: "Abstract distributed AI inference system with token streams, accelerator nodes, agent branches, cache blocks, and workload traces."
 ---
 
 [Download the English paper as PDF (v0.5)](/blog/llm-inference-system-workload-survey/survey-en-v0.5.pdf)

@@ -42,6 +42,21 @@ sections:
     design:
       columns: '1'
   - block: collection
+    id: blog
+    content:
+      title: 最新研究笔记
+      text: 关于 AI 系统、推理技术与视觉智能的深度文章。
+      count: 3
+      filters:
+        folders:
+          - blog
+        exclude_future: false
+        exclude_past: false
+    design:
+      view: article-grid
+      fill_image: true
+      columns: 2
+  - block: collection
     id: papers
     content:
       title: 论文与专利

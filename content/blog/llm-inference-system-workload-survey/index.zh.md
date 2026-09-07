@@ -13,6 +13,11 @@ draft: false
 math: true
 toc: true
 isCJKLanguage: true
+image:
+  caption: "大模型推理工作负载在分布式服务系统中的流动。"
+  focal_point: Center
+  placement: 1
+  alt_text: "抽象的分布式 AI 推理系统，展示词元流、加速器节点、智能体分支、缓存块和工作负载轨迹。"
 ---
 
 [下载中文论文 PDF（v1.0）](/blog/llm-inference-system-workload-survey/survey-zh-v1.0.pdf)
