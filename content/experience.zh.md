@@ -9,7 +9,7 @@ design:
 sections:
   - block: resume-experience
     content:
-      username: me
+      username: me-zh
     design:
       date_format: '2006年1月'
       is_education_first: false

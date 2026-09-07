@@ -1,0 +1,19 @@
+---
+title: "A Fast Auto Exposure Method Using ***"
+authors:
+  - Hongjiang ZHENG
+  - me
+  - Xin CHANG
+  - Songmin YAN
+  - Yumin LIU
+date: 2025-01-01T00:00:00Z
+publication_types:
+  - patent
+publication: "WIPO Patent Application No. ***"
+publication_short: ""
+tags:
+  - computer vision
+  - photography
+featured: false
+draft: false
+---
