@@ -24,6 +24,20 @@ image:
 
 *论文版本 v1.1，日期 2026-09-07。*
 
+### 推荐引用
+
+```bibtex
+@misc{xing2026llmworkloadsurvey,
+  author       = {Jeff XING},
+  title        = {A Survey of Workloads for Large Language Model Inference Serving: Description, Public Datasets, and Evaluation Practice},
+  year         = {2026},
+  month        = sep,
+  howpublished = {Online},
+  url          = {https://jeffxing.com/zh/blog/llm-inference-system-workload-survey/},
+  note         = {Version 1.1. PDF available at \url{https://jeffxing.com/blog/llm-inference-system-workload-survey/survey-zh-v1.1.pdf}},
+}
+```
+
 > **摘要。** 推理服务系统的性能评估依赖所采用的工作负载，但现有研究较少系统考察负载本身的构成及其表示偏差。本文将工作负载界定为施加于被测系统的请求流，并从到达过程、长度、请求内容及其复用关系、会话依赖、流量类别与模型路由五个方面加以描述，同时给出该描述成立的前提条件，以及三类落在描述之外的请求属性。围绕这一框架，本文开展三方面工作。第一，梳理截至 2026 年 9 月可获取的公开负载数据集与负载生成工具，结果表明所考察的生产轨迹均未保留原始词元序列，到达时刻或内容标识普遍经过聚合或块化处理。第二，对 29 篇推理服务论文的实验设置按统一字段编码，结果为：其中 1 篇报告了 KV 缓存块大小的敏感性分析；2020 至 2025 年样本中近半数固定或截断输出长度，但多数未说明处理方式；所考察的 4 个仿真器均未直接回放生产到达时刻。第三，在 2026 年样本中观察到两种评测方式并存：其中面向真实系统的工作较多采用轨迹回放，仿真类工作较多采用固定长度与 ShareGPT 数据集。本文最后给出一份评测设置检查表，并列出若干尚待研究的问题。本文不构成对领域总体分布的估计，样本选择方式与局限见“有效性威胁与研究局限”一节。
 
 **关键词：**大语言模型；推理服务；负载刻画；评测方法；前缀缓存

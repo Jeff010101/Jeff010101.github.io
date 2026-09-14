@@ -23,6 +23,20 @@ image:
 
 *Paper version v1.1, dated 2026-09-07.*
 
+### How to cite
+
+```bibtex
+@misc{xing2026llmworkloadsurvey,
+  author       = {Jeff XING},
+  title        = {A Survey of Workloads for Large Language Model Inference Serving: Description, Public Datasets, and Evaluation Practice},
+  year         = {2026},
+  month        = sep,
+  howpublished = {Online},
+  url          = {https://jeffxing.com/blog/llm-inference-system-workload-survey/},
+  note         = {Version 1.1. PDF available at \url{https://jeffxing.com/blog/llm-inference-system-workload-survey/survey-en-v1.1.pdf}},
+}
+```
+
 > **Abstract.** Performance results for inference serving systems depend on the workload under which they are obtained, yet the workload itself has received little systematic attention. We define a workload as the request stream presented to the system under test, and describe it along five aspects: the arrival process, lengths, request content and its reuse relation, session and dependency, and traffic class and model routing. We state the conditions under which this description holds, and identify three classes of request attribute that fall outside it. We then report three studies. First, we map the public workload datasets and load-generation tools available as of September 2026: none of the production traces we examined retains the original token sequence, and arrival times or content identifiers are generally aggregated or block-coded. We give the direction and magnitude of the bias this introduces. Second, we code the experimental setup of 29 serving papers against a fixed set of eight fields: 1 reports a sensitivity analysis over KV cache block size; roughly half of the 2020–2025 sample fixes or truncates output length, and most do not state the mechanism; none of the four simulators we examined replays production arrival timestamps. Third, within our 2026 sample we observe two coexisting evaluation practices: work on real systems tends to use trace replay, while simulation work tends to validate on fixed lengths and ShareGPT. We close with a checklist for evaluation setups and a list of open questions. This study is not a prevalence estimate for the field; our sampling and its limitations are discussed in the section on threats to validity.
 
 **Keywords:** large language model; inference serving; workload characterization; evaluation methodology; prefix caching
