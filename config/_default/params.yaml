@@ -1,6 +1,19 @@
 siteStats:
   enable: true
   views_key: jeffxing-site-views
+  countries_key_prefix: jeffxing-site-cc
+  max_countries: 5
+  display_countries:
+    - CN
+    - US
+    - HK
+    - TW
+    - SG
+    - JP
+    - KR
+    - DE
+    - GB
+    - OTHER
 
 hugoblox:
   schema: "2.0"

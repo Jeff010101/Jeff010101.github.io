@@ -1,9 +1,22 @@
 {{- $stats := site.Params.siteStats -}}
 {{- if and $stats $stats.enable -}}
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/flag-icons@7.5.0/css/flag-icons.min.css"
+    crossorigin="anonymous"
+  >
+  <style>
+    .site-views .site-stats-flag {
+      width: 1.1em;
+      line-height: 1em;
+      border-radius: 2px;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+  </style>
   <span
     id="site-views"
-    class="block text-center text-xs text-gray-400 dark:text-gray-500 opacity-70 mb-1"
-    data-views-key="{{ $stats.views_key }}"
+    class="site-views block text-center text-xs text-gray-400 dark:text-gray-500 opacity-70 mb-1"
+    data-config="{{ $stats | jsonify }}"
     hidden
   ></span>
   <script src="{{ "js/site-stats.js" | relURL }}" defer></script>
