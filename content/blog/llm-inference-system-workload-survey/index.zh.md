@@ -13,6 +13,20 @@ draft: false
 math: true
 toc: true
 isCJKLanguage: true
+stats:
+  enable: true
+  views_key: jeffxing-llm-workload-survey-views
+  downloads:
+    - key: jeffxing-llm-workload-survey-dl-en
+      match: survey-en-v1.1.pdf
+      label:
+        en: "PDF (EN)"
+        zh: "PDF（英文）"
+    - key: jeffxing-llm-workload-survey-dl-zh
+      match: survey-zh-v1.1.pdf
+      label:
+        en: "PDF (ZH)"
+        zh: "PDF（中文）"
 image:
   caption: "大模型推理工作负载在分布式服务系统中的流动。"
   focal_point: Center

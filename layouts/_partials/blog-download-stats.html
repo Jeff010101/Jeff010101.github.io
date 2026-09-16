@@ -1,0 +1,12 @@
+{{- with .Params.stats -}}
+  {{- if .enable -}}
+    <div
+      id="blog-download-stats"
+      class="blog-download-stats -mt-4 mb-8 text-xs text-gray-400 dark:text-gray-500 ltr:text-right rtl:text-left opacity-80"
+      data-config="{{ . | jsonify }}"
+      data-lang="{{ $.Lang }}"
+      hidden
+    ></div>
+    <script src="{{ "js/blog-stats.js" | relURL }}" defer></script>
+  {{- end -}}
+{{- end -}}

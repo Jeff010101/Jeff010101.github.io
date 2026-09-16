@@ -12,6 +12,20 @@ tags:
 draft: false
 math: true
 toc: true
+stats:
+  enable: true
+  views_key: jeffxing-llm-workload-survey-views
+  downloads:
+    - key: jeffxing-llm-workload-survey-dl-en
+      match: survey-en-v1.1.pdf
+      label:
+        en: "PDF (EN)"
+        zh: "PDF（英文）"
+    - key: jeffxing-llm-workload-survey-dl-zh
+      match: survey-zh-v1.1.pdf
+      label:
+        en: "PDF (ZH)"
+        zh: "PDF（中文）"
 image:
   caption: "LLM inference workloads flowing through a distributed serving system."
   focal_point: Center
