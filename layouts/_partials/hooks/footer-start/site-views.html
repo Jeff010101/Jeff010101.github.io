@@ -1,0 +1,10 @@
+{{- $stats := site.Params.siteStats -}}
+{{- if and $stats $stats.enable -}}
+  <span
+    id="site-views"
+    class="block text-center text-xs text-gray-400 dark:text-gray-500 opacity-70 mb-1"
+    data-views-key="{{ $stats.views_key }}"
+    hidden
+  ></span>
+  <script src="{{ "js/site-stats.js" | relURL }}" defer></script>
+{{- end -}}

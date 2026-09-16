@@ -1,3 +1,7 @@
+siteStats:
+  enable: true
+  views_key: jeffxing-site-views
+
 hugoblox:
   schema: "2.0"
   identity:

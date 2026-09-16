@@ -14,7 +14,11 @@
 
     if (!config.enable || !config.views_key) return;
 
-    const lang = el.dataset.lang === "zh" ? "zh" : "en";
+    const lang =
+      el.dataset.lang === "zh" ||
+      (document.documentElement.lang || "").startsWith("zh")
+        ? "zh"
+        : "en";
     const labels = {
       en: { views: "Views" },
       zh: { views: "浏览" },
