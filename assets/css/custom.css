@@ -1,0 +1,3 @@
+.resume-biography [class~="md:col-span-8"] > div.mb-16:has(> .grid) {
+  display: none;
+}
